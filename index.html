@@ -295,10 +295,12 @@ function swM(id,btn){
 async function api(sys,msg){
   const r=await fetch("https://api.anthropic.com/v1/messages",{
     method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "anthropic-dangerous-direct-browser-access":"true"
-    },
+   headers:{
+  "Content-Type":"application/json",
+  "x-api-key":"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",
+  "anthropic-version":"2023-06-01",
+  "anthropic-dangerous-direct-browser-access":"true"
+},
     body:JSON.stringify({
       model:"claude-sonnet-4-20250514",
       max_tokens:1000,
