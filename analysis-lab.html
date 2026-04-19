@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Analysis Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#FDF8F2;--nav-bg:#2C3E50;--nav-text:#F5ECD7;--heading:#2C3E50;--body:#3D3D3D;--card-bg:#fff;--shadow:rgba(0,0,0,.07);--r:12px;--mw:1100px;--c4:#27AE60;--c5:#1A9E8F;--mla:#1A6B4A}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--body);line-height:1.7}
+    nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);box-shadow:0 2px 12px rgba(0,0,0,.18)}
+    .ni{max-width:var(--mw);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:62px;flex-wrap:wrap;gap:8px}
+    .nb{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:var(--nav-text);text-decoration:none;padding:12px 0}
+    .nl{display:flex;gap:4px;flex-wrap:wrap;padding:8px 0}
+    .nl a{color:var(--nav-text);text-decoration:none;font-size:.88rem;font-weight:700;padding:6px 13px;border-radius:6px;opacity:.75;transition:opacity .2s,background .2s}
+    .nl a:hover,.nl a.active{opacity:1;background:rgba(255,255,255,.12)}
+    .hero{background:linear-gradient(135deg,#2C3E50,#3B5268 60%,#2C4A3E);padding:72px 24px 64px;text-align:center}
+    .hi{max-width:700px;margin:0 auto}
+    .hero h1{font-family:'Fraunces',serif;font-size:clamp(2.4rem,6vw,3.8rem);font-weight:700;color:#F5ECD7;line-height:1.1;margin-bottom:18px}
+    .hero h1 em{font-style:italic;color:#F4C842}
+    .hero p{font-size:1.08rem;color:rgba(245,236,215,.82);max-width:520px;margin:0 auto 30px;line-height:1.68}
+    .pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .pill{background:rgba(255,255,255,.12);color:#F5ECD7;border-radius:20px;padding:5px 14px;font-size:.83rem;font-weight:600}
+    section{padding:80px 24px;max-width:var(--mw);margin:0 auto;opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+    section.visible{opacity:1;transform:translateY(0)}
+    .sep{height:1px;background:linear-gradient(to right,transparent,#E0D8D0,transparent);margin:0 24px}
+    .slbl{font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c4);margin-bottom:10px}
+    .stitle{font-family:'Fraunces',serif;font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;color:var(--heading);line-height:1.15;margin-bottom:14px}
+    .sintro{font-size:1.03rem;color:#5a5a5a;max-width:640px;margin-bottom:48px;line-height:1.68}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    @media(max-width:768px){.grid{grid-template-columns:1fr}}
+    .sc{background:var(--card-bg);border-radius:var(--r);box-shadow:0 2px 16px var(--shadow);padding:28px;border-top:4px solid var(--a,#ccc);transition:transform .22s,box-shadow .22s}
+    .sc:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.11)}
+    .ch{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .ci{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .ct{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;color:var(--heading)}
+    .cn{font-size:.73rem;font-weight:700;color:var(--a,#888);letter-spacing:.08em;text-transform:uppercase}
+    .cd{font-size:.97rem;margin-bottom:16px;line-height:1.65}
+    .ce{background:#FAFAFA;border-left:3px solid var(--a,#ccc);border-radius:0 6px 6px 0;padding:12px 16px;font-size:.92rem;color:#444;margin-bottom:14px;line-height:1.65}
+    .hl{padding:1px 5px;border-radius:3px;font-weight:700}
+    .wo{background:#FFF8F0;border:1px solid #FDDCB5;border-radius:8px;padding:10px 14px;font-size:.87rem;color:#7A4F1D;display:flex;gap:8px;align-items:flex-start}
+    .wo::before{content:"⚠️";flex-shrink:0}
+    .tnav{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid #E8E0D8;margin-bottom:28px}
+    .tb{font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:700;padding:9px 16px;border:none;background:transparent;color:#888;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color .2s,border-color .2s;border-radius:6px 6px 0 0}
+    .tb:hover{color:var(--heading)}
+    .tb.active{color:var(--ta,var(--c4));border-bottom-color:var(--ta,var(--c4))}
+    .tp{display:none;animation:fu .2s ease}
+    .tp.active{display:block}
+    @keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .ls{background:var(--card-bg);border-radius:var(--r);box-shadow:0 2px 16px var(--shadow);padding:32px;min-height:340px}
+    .slb{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:6px}
+    .stt{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;color:var(--heading);margin-bottom:18px}
+    .pb{background:#F7F3EE;border-left:4px solid var(--c4);border-radius:0 8px 8px 0;padding:20px 24px;font-style:italic;font-size:.98rem;line-height:1.78;margin-bottom:16px}
+    .wb{background:#FFF5F5;border-left:4px solid #E74C3C;border-radius:0 8px 8px 0;padding:16px 20px;font-size:.96rem;color:#444;margin-bottom:12px;line-height:1.65}
+    .wl{font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#E74C3C;margin-bottom:6px}
+    .sb{background:#F0FFF6;border-left:4px solid var(--c4);border-radius:0 8px 8px 0;padding:16px 20px;font-size:.96rem;color:#444;margin-bottom:12px;line-height:1.65}
+    .sl{font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--c4);margin-bottom:6px}
+    .an{background:#E8F8F0;border:1px solid #A8DFC0;border-radius:8px;padding:12px 16px;font-size:.88rem;color:#1A6B3A;margin-top:10px}
+    .an::before{content:"💡 "}
+    .rp{font-size:.97rem;font-weight:600;line-height:1.6;margin-bottom:8px}
+    .rn{font-size:.8rem;color:#bbb;margin-bottom:12px}
+    .snav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+    .sind{font-size:.84rem;color:#bbb;font-weight:600}
+    button{font-family:'Nunito',sans-serif;font-weight:700;border:none;cursor:pointer;transition:all .2s}
+    .btn{padding:10px 22px;border-radius:8px;font-size:.92rem;background:var(--bc,var(--c4));color:#fff}
+    .btn:hover{filter:brightness(.88);transform:scale(1.02)}
+    .btn:disabled{opacity:.38;cursor:not-allowed;transform:none;filter:none}
+    .bg{background:transparent;color:var(--heading);border:1.5px solid #D0C8C0;padding:9px 20px;border-radius:8px;font-size:.92rem}
+    .bg:hover{background:#F0EBE4}
+    .bg:disabled{opacity:.3;cursor:not-allowed}
+    .pm{max-width:720px}
+    .fg{margin-bottom:20px}
+    .fl{font-weight:700;font-size:.9rem;color:var(--heading);margin-bottom:6px;display:block}
+    textarea{width:100%;border:1.5px solid #E0D8D0;border-radius:8px;padding:12px 14px;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--body);background:#FAFAF8;resize:vertical;min-height:100px;transition:border-color .2s}
+    textarea:focus{outline:none;border-color:var(--c4)}
+    select{width:100%;border:1.5px solid #E0D8D0;border-radius:8px;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--body);background:#FAFAF8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;appearance:none;cursor:pointer}
+    select:focus{outline:none;border-color:var(--c4)}
+    .fb{border-radius:10px;padding:22px 24px;margin-top:20px;font-size:.97rem;line-height:1.72;border-left:4px solid var(--fc,var(--c4));background:#F8FFFE;display:none}
+    .fb.visible{display:block;animation:fu .3s ease}
+    .lm{color:#888;font-style:italic;display:flex;align-items:center;gap:10px}
+    .sp{width:18px;height:18px;border:2px solid #ddd;border-top-color:var(--c4);border-radius:50%;animation:spin .75s linear infinite;display:inline-block;flex-shrink:0}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .mc{background:var(--card-bg);border-radius:var(--r);box-shadow:0 2px 16px var(--shadow);padding:26px 28px;margin-bottom:22px;border-top:4px solid var(--mla);transition:transform .22s,box-shadow .22s}
+    .mc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+    .mrt{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:700;color:var(--heading);margin-bottom:10px}
+    .mrx{font-size:.96rem;margin-bottom:14px;line-height:1.65}
+    .me{background:#F0F7F4;border-left:3px solid var(--mla);border-radius:0 6px 6px 0;padding:12px 16px;font-family:'Courier New',monospace;font-size:.87rem;color:#1A3D2D;margin-bottom:12px;line-height:1.72}
+    .merr{background:#FFF5F5;border-left:3px solid #E74C3C;border-radius:0 6px 6px 0;padding:10px 14px;font-size:.88rem;color:#7A2020;margin-bottom:10px}
+    .mel{font-weight:700;font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;color:#E74C3C;margin-bottom:4px}
+    .mw{background:#E8F5F0;border-radius:6px;padding:9px 13px;font-size:.88rem;color:#1A6B4A;font-weight:600}
+    .mw::before{content:"→ "}
+    .oc{background:#E8F5F0;border-left:5px solid var(--mla);border-radius:0 12px 12px 0;padding:24px 28px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .oc p{font-size:1rem;font-weight:700;color:var(--heading)}
+    .ob{display:inline-flex;align-items:center;gap:7px;background:var(--mla);color:#fff;padding:11px 20px;border-radius:8px;text-decoration:none;font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;transition:filter .2s,transform .2s;white-space:nowrap}
+    .ob:hover{filter:brightness(.88);transform:scale(1.02)}
+    .cl{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .cl li{display:flex;align-items:flex-start;gap:10px;font-size:.96rem;line-height:1.55}
+    .cl li::before{content:"☐";font-size:1.1rem;color:var(--mla);flex-shrink:0;margin-top:1px}
+    .bqi{padding-left:48px;font-style:italic;margin-top:8px;display:block}
+    footer{background:var(--nav-bg);color:rgba(245,236,215,.55);text-align:center;padding:28px 24px;font-size:.83rem}
+    @media(max-width:600px){.ni{padding:10px 16px}section{padding:52px 16px}.oc{flex-direction:column}.ls{padding:22px 18px}}
+  </style>
+</head>
+<body>
+<nav aria-label="Main navigation">
+  <div class="ni">
+    <a href="#top" class="nb">The Analysis Lab</a>
+    <div class="nl">
+      <a href="#reference">Reference Guide</a>
+      <a href="#lessons">Lessons</a>
+      <a href="#practice">Practice</a>
+      <a href="#mla">MLA &amp; Citation</a>
+    </div>
+  </div>
+</nav>
+<div id="top" class="hero">
+  <div class="hi">
+    <h1>The <em>Analysis</em> Lab</h1>
+    <p>Master the moves that make writing powerful — from building a claim to drawing out its implications for the reader and the world.</p>
+    <div class="pills">
+      <span class="pill">📌 Claims &amp; Evidence</span>
+      <span class="pill">🔍 Elaboration</span>
+      <span class="pill">⚖️ Counterclaims</span>
+      <span class="pill">🧩 Synthesis</span>
+      <span class="pill">📄 MLA Format</span>
+    </div>
+  </div>
+</div>
+<section id="reference" aria-label="Reference Guide">
+  <div class="slbl">Section 1</div>
+  <h2 class="stitle">Reference Guide</h2>
+  <p class="sintro">Eight skills. Every strong analytical essay uses all of them. Learn what each one is, see it in action, and know what to watch out for.</p>
+  <div class="grid" id="skills-grid"></div>
+</section>
+<div class="sep"></div>
+<section id="lessons" aria-label="Interactive Lessons">
+  <div class="slbl">Section 2</div>
+  <h2 class="stitle">Interactive Lessons</h2>
+  <p class="sintro">One lesson for each skill. Read a passage, see a weak example, then a strong one — and reflect on what changed.</p>
+  <div class="tnav" id="ltabs" role="tablist" style="--ta:var(--c4)"></div>
+  <div id="lpanels"></div>
+</section>
+<div class="sep"></div>
+<section id="practice" aria-label="Practice Tool">
+  <div class="slbl">Section 3</div>
+  <h2 class="stitle">Practice Tool</h2>
+  <p class="sintro">Get real feedback on your own writing, or ask a question about analysis. The coach will not write for you — but it will tell you exactly what to work on.</p>
+  <div class="tnav" role="tablist" style="--ta:var(--c4)">
+    <button class="tb active" role="tab" aria-selected="true" onclick="swP('pf',this)">Get Feedback on My Writing</button>
+    <button class="tb" role="tab" aria-selected="false" onclick="swP('pq',this)">Ask a Question</button>
+  </div>
+  <div id="pf" class="tp active pm">
+    <div class="fg"><label class="fl" for="ss">Which skill are you practicing?</label><select id="ss"><option value="">— Choose a skill —</option></select></div>
+    <div class="fg"><label class="fl" for="src">Paste your source text here (optional)</label><textarea id="src" rows="4" placeholder="Paste the passage you are analyzing, or leave this blank."></textarea></div>
+    <div class="fg"><label class="fl" for="att">Write your attempt here</label><textarea id="att" rows="6" placeholder="Write your analysis attempt. Take your time — the more honest your attempt, the more useful the feedback."></textarea></div>
+    <button class="btn" style="--bc:var(--c4)" onclick="getFeedback()">Get Feedback</button>
+    <div class="fb" id="fr" role="status" aria-live="polite"></div>
+  </div>
+  <div id="pq" class="tp pm">
+    <div class="fg"><label class="fl" for="aq">Ask a question about analysis</label><textarea id="aq" rows="4" placeholder="Ask anything about claims, evidence, elaboration, counterclaims, synthesis, or conclusions."></textarea></div>
+    <button class="btn" style="--bc:var(--c5)" onclick="askQ()">Ask</button>
+    <div class="fb" id="qr" role="status" aria-live="polite" style="--fc:var(--c5);background:#F0FDFA;"></div>
+  </div>
+</section>
+<div class="sep"></div>
+<section id="mla" aria-label="MLA and Citation Skills">
+  <div class="slbl">Section 4</div>
+  <h2 class="stitle">MLA &amp; Citation</h2>
+  <p class="sintro">Citation is not busywork — it is how you show your reader that your thinking is grounded in real sources. Learn the rules, then go deeper at Purdue OWL.</p>
+  <div class="tnav" role="tablist" style="--ta:var(--mla)">
+    <button class="tb active" role="tab" aria-selected="true" onclick="swM('it',this)">In-Text Citations</button>
+    <button class="tb" role="tab" aria-selected="false" onclick="swM('wc',this)">Works Cited</button>
+    <button class="tb" role="tab" aria-selected="false" onclick="swM('mlac',this)">Ask the Coach</button>
+  </div>
+  <div id="it" class="tp active">
+    <div class="mc"><div class="mrt">Rule 1 — The Basic Format</div><div class="mrx">Place the author's last name and page number in parentheses at the end of the sentence, before the period. No comma between name and page number.</div><div class="me">Golding depicts the conch as a symbol of order that the boys quickly abandon (Golding 16).</div><div class="merr"><div class="mel">Common Error</div>(Golding, 16) | (Golding p. 16) | placing the citation after the period.</div><div class="mw">The parenthetical is part of the sentence — it lives inside the period, not after it.</div></div>
+    <div class="mc"><div class="mrt">Rule 2 — Signal Phrases (No Quote Bombs)</div><div class="mrx">Never drop a quote into a sentence without a signal phrase that names the author or source. Integrate the quote grammatically.</div><div class="me">As Golding suggests, the boys treat the conch as "a worthy plaything" rather than a tool of governance (16).</div><div class="merr"><div class="mel">Common Error — Quote Bomb</div>"A worthy plaything" (Golding 16). The boys no longer respected the conch.</div><div class="mw">Every quote needs a host sentence. An unintroduced quote breaks the reader's trust and reads as careless.</div></div>
+    <div class="mc"><div class="mrt">Rule 3 — No Author Known / Website Sources</div><div class="mrx">If no author is listed, use a shortened version of the title in quotation marks (for articles) or italics (for books or sites) in place of the author's name.</div><div class="me">Studies suggest that close reading improves retention ("Reading Strategies" 4).</div><div class="merr"><div class="mel">Common Error</div>Using the full title, using the URL, or skipping the citation entirely.</div><div class="mw">The shortened title points your reader to the correct Works Cited entry when no author exists.</div></div>
+    <div class="mc"><div class="mrt">Rule 4 — Block Quotations (Long Quotes)</div><div class="mrx">If a quote runs longer than four lines of prose, format it as a block quotation: start on a new line, indent one inch, no quotation marks, citation after final punctuation.</div><div class="me">The boys' descent begins almost immediately after their arrival:<span class="bqi">Ralph looked at the two boys with the conch and frowned.<br>The afternoon had advanced, and even the shadows on the<br>mountain had moved toward the sea. Ralph did not understand<br>what the darkness behind him was. (Golding 34)</span></div><div class="merr"><div class="mel">Common Error</div>Putting quotation marks around a block quote, or using block format for short quotes.</div><div class="mw">Block formatting signals the passage is long enough to stand alone — the format itself argues for the quote's importance.</div></div>
+    <div class="oc"><p>For every other MLA question, go straight to the source.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — MLA Guide <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+  <div id="wc" class="tp">
+    <div class="mc"><div class="mrt">Book — Single Author</div><div class="mrx">Format: Last, First. <em>Title of Book.</em> Publisher, Year.</div><div class="me">Golding, William. Lord of the Flies. Faber and Faber, 1954.</div><div class="merr"><div class="mel">Common Error</div>Golding, William. "Lord of the Flies." Faber and Faber, 1954. (Books are italicized, not in quotation marks.)</div><div class="mw">Italics signal a standalone work. Quotation marks signal a work within a larger work.</div></div>
+    <div class="mc"><div class="mrt">Article in a Journal or Magazine</div><div class="mrx">Format: Last, First. "Article Title." <em>Journal Name,</em> vol. #, no. #, Year, pp. #–#.</div><div class="me">Hynes, Samuel. "Several Interpretations of Lord of the Flies." English Journal, vol. 55, no. 2, 1966, pp. 40–45.</div><div class="merr"><div class="mel">Common Error</div>Forgetting volume and issue numbers, or italicizing the article title instead of the journal name.</div><div class="mw">The article title gets quotes; the journal it lives in gets italics — same logic as book versus chapter.</div></div>
+    <div class="mc"><div class="mrt">Website / Webpage</div><div class="mrx">Format: Last, First (if known). "Page Title." <em>Website Name,</em> Day Month Year, URL.</div><div class="me">Brizee, Allen. "MLA Formatting and Style Guide." Purdue Online Writing Lab, 2 Mar. 2022, owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html.</div><div class="merr"><div class="mel">Common Error</div>Listing only the homepage URL, omitting the author, or including "https://" (MLA omits the protocol).</div><div class="mw">A bare URL tells the reader nothing — the full entry gives them every tool to verify the source.</div></div>
+    <div class="mc"><div class="mrt">Chapter in an Edited Collection</div><div class="mrx">Format: Last, First. "Chapter Title." <em>Book Title,</em> edited by First Last, Publisher, Year, pp. #–#.</div><div class="me">Rosenfield, Claire. "Men of a Smaller Growth." Lord of the Flies: A Casebook, edited by James R. Baker, Prentice Hall, 1988, pp. 35–51.</div><div class="merr"><div class="mel">Common Error</div>Treating the chapter like a standalone book, or omitting the editor's name.</div><div class="mw">The editor curated the collection — their name is part of the full record of the source.</div></div>
+    <div class="mc"><div class="mrt">Works Cited Page — Formatting Rules</div><div class="mrx">These rules govern the entire page, not just individual entries.</div><ul class="cl"><li>"Works Cited" is centered at the top — not bold, not underlined, not in quotes</li><li>Entries are listed alphabetically by the author's last name (or title if no author)</li><li>The entire page is double-spaced, including the space between entries</li><li>Each entry uses a hanging indent: first line flush left, subsequent lines indented half an inch</li><li>The Works Cited page is its own page at the end — never tacked onto the last paragraph</li></ul></div>
+    <div class="oc"><p>See every Works Cited entry type at Purdue OWL.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_works_cited_page_basic_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — Works Cited <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  </div>
+  <div id="mlac" class="tp pm">
+    <div class="fg"><label class="fl" for="mq">Ask an MLA or citation question</label><textarea id="mq" rows="4" placeholder="Ask anything about in-text citations, Works Cited entries, block quotes, signal phrases, or MLA formatting rules."></textarea></div>
+    <button class="btn" style="--bc:var(--mla)" onclick="askMLA()">Ask the Coach</button>
+    <div class="fb" id="mr" role="status" aria-live="polite" style="--fc:var(--mla);background:#F0FAF6;"></div>
+  </div>
+</section>
+<footer>The Analysis Lab &nbsp;·&nbsp; Concordia International School Shanghai &nbsp;·&nbsp; High School English</footer>
+<script>
+const SK=[
+  {id:1,name:"Claims",icon:"📌",a:"#C0392B",al:"#FDECEA",def:"A direct, arguable assertion about a text or topic. Not a fact, not a question. It must be debatable.",ex:`In Lord of the Flies, <span class="hl" style="background:#FDECEA;color:#C0392B;">Golding argues that civilization is a fragile construct that collapses under fear</span> — not a given, but a performance that requires consent and authority to sustain.`,wo:"Stating a fact or plot summary instead of a claim. If it cannot be disagreed with, it is not a claim.",ls:{w:"Mira leaves her village. She has to decide if she wants to go back.",wn:"This is plot summary. It tells us what happened, not what it means.",s:"Mira's reluctance to return reveals that survival strips away not just comfort, but the very idea of home as a place of safety.",sn:"This is a claim: it makes an arguable interpretive assertion about what the character's choice means thematically.",r:"Write a one-sentence claim about Mira. Make sure someone could reasonably disagree with it."}},
+  {id:2,name:"Subclaims",icon:"🔗",a:"#E67E22",al:"#FEF0E3",def:"Supporting arguments that build the case for the main claim. Each subclaim focuses on one piece of the argument.",ex:`<span class="hl" style="background:#FEF0E3;color:#B85C10;">The boys' rapid descent into violence after Ralph loses authority demonstrates that social order depends on perceived legitimacy</span> — not just rules, but belief in the one who enforces them.`,wo:"Repeating the main claim in different words. A subclaim should add new ground, not re-cover old ground.",ls:{w:"Mira is sad about leaving. She also feels unsure about returning. These show that she is conflicted.",wn:"This restates the same point twice. Both sentences say the same thing. That is repetition, not a subclaim.",s:"Mira's refusal to look back at the floodline suggests that her conflict is not about the village itself, but about who she was before the water came.",sn:"This advances a specific angle: the conflict is about identity, not geography. That is a focused subclaim that opens new analytical territory.",r:"Write one subclaim that could support your claim from Lesson 1. What one piece of your argument does it prove?"}},
+  {id:3,name:"Counterclaims",icon:"⚖️",a:"#D4A017",al:"#FDF6E3",def:"An opposing argument the writer acknowledges and then refutes or qualifies. Shows intellectual honesty and strengthens credibility.",ex:`Some may argue that the boys' violence stems from their youth; <span class="hl" style="background:#FDF6E3;color:#9A7010;">however, Golding includes adult figures who fail equally, suggesting the problem is human nature, not age.</span>`,wo:"Ignoring the counterclaim entirely, or agreeing with it without rebuttal. Conceding is fine — but you must respond.",ls:{w:"Some people might think Mira should go back. But she should not.",wn:"The counterclaim is vague, and the rebuttal offers no reasoning. 'But she should not' is an assertion, not an argument.",s:"One might argue that returning would give Mira closure; yet the text suggests that closure requires a self that the flood has already changed — there is nothing left to close.",sn:"The counterclaim is specific and fair. The rebuttal engages it on its own terms, using the text's logic rather than simply dismissing it.",r:"Name one reasonable objection to your claim from Lesson 1. Then write one sentence responding to it."}},
+  {id:4,name:"Textual Evidence",icon:"📖",a:"#27AE60",al:"#E8F8EF",def:"A direct quote or close paraphrase from the text that supports a claim. Must be introduced, integrated grammatically, and cited.",ex:`When Ralph blows the conch and the boys assemble, their fragile order suggests that <span class="hl" style="background:#E8F8EF;color:#1A7A42;">"the shell was interesting and pretty and a worthy plaything"</span> (Golding 16), revealing how quickly symbolic authority becomes novelty.`,wo:'Dropping a quote without introduction or citation — the "quote bomb." A quote without a host sentence breaks the reader\'s flow.',ls:{w:'"She did not look at the water." Mira was afraid of what she might feel.',wn:"Classic quote bomb: the quote appears with no introduction and no citation. The reader has no idea who said it or why it matters.",s:'When Mira reaches the ridge, the narrator notes that "she did not look at the water, not even once" (7), a detail that transforms a simple action into an act of deliberate self-protection.',sn:"The quote has a host sentence, a citation, and is integrated grammatically. The reader knows where it comes from and why it is here.",r:"Find one sentence from the Mira passage that could serve as evidence for your claim. Write a sentence that introduces it properly and cite it."}},
+  {id:5,name:"Elaboration",icon:"🔍",a:"#1A9E8F",al:"#E3F6F5",def:"The explanation of HOW and WHY the evidence supports the claim. This is your analytical voice — not summary, not paraphrase.",ex:`<span class="hl" style="background:#E3F6F5;color:#127870;">The word "plaything" is key — it reduces the conch from a symbol of democratic order to a child's toy, foreshadowing the collapse of self-governance</span> that Golding builds across the novel.`,wo:"Summarizing what the quote says instead of analyzing what it means. If your elaboration could work without reading the text, it is probably summary.",ls:{w:"The quote says she did not look at the water. This shows she was scared of the flood.",wn:"This is summary: it restates what the quote already tells us. It does not explain what the choice reveals or why it matters.",s:'The phrase "not even once" escalates the detail from refusal into discipline — Mira is not simply avoiding the water, she is training herself not to want what she has already lost.',sn:"This elaboration names the specific language, explains the escalation in meaning, and draws out a psychological implication. That is the difference between summary and analysis.",r:"Take your evidence from Lesson 4 and write two sentences explaining what it means — not what it says. Focus on a specific word or phrase."}},
+  {id:6,name:"Evaluation of Evidence",icon:"🧪",a:"#2980B9",al:"#E3F1FB",def:"An honest assessment of the quality, reliability, or limitations of the evidence. Not all evidence is equally strong — say so.",ex:`While this single moment may not prove Golding's full thesis, <span class="hl" style="background:#E3F1FB;color:#1A5C8A;">it establishes a pattern that recurs throughout the novel, making it a reliable indicator of thematic intent</span> rather than an isolated image.`,wo:"Treating all evidence as equally strong without questioning any of it. Strong writers do not just present evidence — they assess it.",ls:{w:"This quote proves that Mira is afraid. It is very strong evidence for my argument.",wn:"The writer asserts the evidence is strong without explaining why. Saying evidence 'proves' something without reasoning is declaration, not evaluation.",s:"This moment is suggestive rather than definitive — it captures one gesture, not a pattern. Its strength lies in how it mirrors the opening scene, where Mira also avoids looking at something she cannot change.",sn:"The writer honestly qualifies the evidence, then explains what makes it meaningful: repetition creates a pattern, and patterns carry more weight than isolated moments.",r:"Look at the evidence you chose in Lesson 4. Write one honest sentence about its limitations — and one sentence defending its value anyway."}},
+  {id:7,name:"Synthesis",icon:"🧩",a:"#8E44AD",al:"#F4ECF7",def:"The weaving together of multiple claims and evidence into a unified argument. Synthesis shows how parts connect — it is not a list.",ex:`Taken together, the conch's decline, Roger's escalating cruelty, and Jack's tribal rhetoric <span class="hl" style="background:#F4ECF7;color:#6A2F8A;">form a triptych of institutional failure, each strand reinforcing Golding's warning</span> that order is not a default — it is a fragile agreement.`,wo:"Listing points sequentially instead of showing their relationship. If your synthesis could be replaced by 'first... second... third...', it is not synthesis yet.",ls:{w:"Mira does not look at the water. She also refuses to name the village. She walks faster near the border. These all show she is scared.",wn:"Three observations, each followed by the same conclusion. There is no synthesis here — just repetition of the same point with different examples.",s:"Mira's refusal to look, to name, and to slow her pace near the border are not three separate fears — they are one fear expressed through three acts of erasure, each one tightening the argument that return requires a grief she has not allowed herself.",sn:"The three details are connected by a governing idea and shown to be expressions of the same underlying logic, not separate proofs of the same claim.",r:"Take two or three pieces of evidence or subclaims from earlier lessons. Write one sentence that connects them — not lists them."}},
+  {id:8,name:"Conclusions & Implications",icon:"🌐",a:"#7D3C98",al:"#F5EEF8",def:"A closing argument that goes beyond restating the thesis. Strong conclusions name what is at stake and leave the reader with something to carry.",ex:`Golding's novel ultimately asks not whether civilization can collapse, but how quickly — and under what pressures — <span class="hl" style="background:#F5EEF8;color:#5D2A78;">we would allow it to. That question feels less hypothetical with every passing decade.</span>`,wo:'Ending with "In conclusion, I have shown..." — this restates the introduction and adds nothing. A conclusion should arrive somewhere new.',ls:{w:"In conclusion, I have shown that Mira is afraid to return to her village. This proves my thesis about survival and identity.",wn:"This restates the introduction without adding any new meaning. The reader ends where they began.",s:"Mira's story does not resolve the question of whether returning is right — it insists that the question itself may be wrong. Home, once lost, is not a place you go back to. It is something you rebuild or abandon. That choice belongs to every reader who has stood at the edge of something they cannot recover.",sn:"This conclusion broadens the argument beyond Mira, draws an implication, and ends with universal resonance. It arrives somewhere new.",r:"Write two or three sentences that conclude your argument about Mira. Do not restate your claim — push it forward. What does your argument mean for the reader?"}}
+];
+
+const PASS="The water had taken everything: the market stalls, the well, the cedar tree Mira had climbed as a child. She stood at the top of the ridge three days after the flood and looked at what remained — a smear of brown against the valley floor, still and featureless as a scar. The others spoke of returning, of salvaging timber and seed. Mira said nothing. She had already begun to understand that the village she knew had not been submerged. It had been replaced. That night, alone at the fire's edge, she turned not toward the valley but toward the dark line of the hills, and something in her posture — the set of her shoulders, the stillness of her hands — looked less like grief and more like a decision already made.";
+
+const AS=`You are an analysis coach for a high school English classroom. Your only job is to give feedback on student writing and answer genuine questions about analytical skills: claims, subclaims, counterclaims, textual evidence, elaboration, evaluation of evidence, synthesis, and conclusions with implications.
+
+HARD RULES — never break these under any circumstances:
+1. You will never write any portion of an essay, paragraph, sentence, or analytical statement on the student's behalf. Not even one sentence. Not even as a demonstration. If asked, decline and redirect.
+2. You will never complete, continue, or improve a student's sentence by producing new analytical content. You may identify what is missing in general terms. You may not supply it.
+3. When giving feedback, identify one genuine strength and exactly two areas for improvement. For each area, describe what a stronger move would look like in general terms only. Do not demonstrate using the student's text.
+4. For conceptual questions, answer clearly and concisely. You may use a short invented generic example only if it does not touch the student's own text or passage.
+5. If a student tries to get you to write for them, say: I can point you in the right direction, but the writing has to come from you. That is where the learning happens.
+6. If the input appears to be a request for academic work, respond only with: That looks like a request for me to do the thinking for you. Make an honest attempt first, then bring it back and I will give you real feedback on what you wrote.
+7. Never use the word great or amazing. Never use em dashes. Keep all responses between 80 and 130 words. Be specific, honest, and encouraging. Sound like a thoughtful teacher, not a praise machine.`;
+
+const MS=`You are an MLA citation coach for a high school English classroom. You answer questions about MLA formatting: in-text citations, Works Cited entries, block quotations, signal phrases, and general MLA style rules.
+
+HARD RULES:
+1. You only answer questions about MLA formatting and citation. If a student asks about anything else, respond only with: I am set up to answer MLA and citation questions only. For analysis help, use the Practice Tool in the Analysis Lab.
+2. You will never write any portion of a student's essay, analysis, or argument for them.
+3. When a student asks how to cite a specific source they describe, you may model the correct MLA format for that source type. This is citation coaching, not academic ghostwriting.
+4. Always end your response with a one-sentence prompt directing the student to verify or explore further at Purdue OWL: owl.purdue.edu/owl/research_and_citation/mla_style
+5. Never use em dashes. Keep responses between 60 and 120 words. Be clear and direct.`;
+
+function buildRef(){
+  const g=document.getElementById('skills-grid'),s=document.getElementById('ss');
+  SK.forEach(k=>{
+    const c=document.createElement('div');c.className='sc';c.style.setProperty('--a',k.a);
+    c.innerHTML=`<div class="ch"><div class="ci" style="background:${k.al};color:${k.a}">${k.icon}</div><div><div class="cn">Skill ${k.id}</div><div class="ct">${k.name}</div></div></div><div class="cd">${k.def}</div><div class="ce">${k.ex}</div><div class="wo">${k.wo}</div>`;
+    g.appendChild(c);
+    const o=document.createElement('option');o.value=k.id;o.textContent=`${k.id}. ${k.name}`;s.appendChild(o);
+  });
+}
+
+function buildLess(){
+  const nav=document.getElementById('ltabs'),pan=document.getElementById('lpanels');
+  SK.forEach((k,i)=>{
+    const b=document.createElement('button');b.className='tb'+(i===0?' active':'');
+    b.setAttribute('role','tab');b.setAttribute('aria-selected',i===0?'true':'false');b.textContent=k.name;
+    b.onclick=()=>{
+      document.querySelectorAll('#ltabs .tb').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+      document.querySelectorAll('#lpanels .tp').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');b.setAttribute('aria-selected','true');
+      document.getElementById('lp'+i).classList.add('active');
+    };
+    nav.appendChild(b);
+    const p=document.createElement('div');p.className='tp'+(i===0?' active':'');p.id='lp'+i;
+    p.innerHTML=`<div class="ls" id="ls${i}" data-step="1"><div id="sc${i}">${rStep(k,1)}</div><div class="snav"><button class="bg" id="pv${i}" onclick="chStep(${i},-1)" disabled>← Previous</button><span class="sind" id="si${i}">Step 1 of 4</span><button class="btn" id="nx${i}" style="--bc:${k.a}" onclick="chStep(${i},1)">Next →</button></div></div>`;
+    pan.appendChild(p);
+  });
+}
+
+function rStep(k,s){
+  if(s===1)return`<div class="slb">Step 1</div><div class="stt">Read the Passage</div><div class="pb">${PASS}</div><p style="font-size:.88rem;color:#aaa;margin-top:8px;">This passage is used across all eight lessons.</p>`;
+  if(s===2)return`<div class="slb">Step 2</div><div class="stt">A Weak Attempt — ${k.name}</div><div class="wb"><div class="wl">Weak Example</div>${k.ls.w}</div><div class="wo">${k.ls.wn}</div>`;
+  if(s===3)return`<div class="slb">Step 3</div><div class="stt">A Strong Attempt — ${k.name}</div><div class="sb"><div class="sl">Strong Example</div>${k.ls.s}</div><div class="an">${k.ls.sn}</div>`;
+  if(s===4)return`<div class="slb">Step 4</div><div class="stt">Reflect</div><div class="rp">${k.ls.r}</div><div class="rn">Write your response here — this is just for you. This won't be submitted anywhere.</div><textarea rows="5" placeholder="Your thoughts..."></textarea>`;
+}
+
+function chStep(i,d){
+  const c=document.getElementById('ls'+i),cur=parseInt(c.dataset.step),nxt=cur+d;
+  if(nxt<1||nxt>4)return;
+  c.dataset.step=nxt;
+  document.getElementById('sc'+i).innerHTML=rStep(SK[i],nxt);
+  document.getElementById('si'+i).textContent=`Step ${nxt} of 4`;
+  document.getElementById('pv'+i).disabled=nxt===1;
+  const nb=document.getElementById('nx'+i);nb.disabled=nxt===4;nb.textContent=nxt===4?'Done ✓':'Next →';
+}
+
+function swP(id,btn){
+  document.querySelectorAll('#practice .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#practice .tp').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
+  document.getElementById(id).classList.add('active');
+}
+
+function swM(id,btn){
+  document.querySelectorAll('#mla .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#mla .tp').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
+  document.getElementById(id).classList.add('active');
+}
+
+// ── API CALL WITH CORS FIX ──────────────────────────────
+async function api(sys,msg){
+  const r=await fetch("https://api.anthropic.com/v1/messages",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "anthropic-dangerous-direct-browser-access":"true"
+    },
+    body:JSON.stringify({
+      model:"claude-sonnet-4-20250514",
+      max_tokens:1000,
+      system:sys,
+      messages:[{role:"user",content:msg}]
+    })
+  });
+  if(!r.ok)throw new Error(r.status);
+  const d=await r.json();
+  return d.content.map(b=>b.text||'').join('');
+}
+
+function load(id,col){
+  const b=document.getElementById(id);
+  if(col)b.style.setProperty('--fc',col);
+  b.innerHTML='<span class="lm"><span class="sp"></span>Thinking...</span>';
+  b.classList.add('visible');
+}
+
+function res(id,txt,col){
+  const b=document.getElementById(id);
+  if(col)b.style.setProperty('--fc',col);
+  b.innerHTML=txt.replace(/\n/g,'<br>');
+  b.classList.add('visible');
+}
+
+function err(id){
+  const b=document.getElementById(id);
+  b.innerHTML='<span style="color:#C0392B;">Something went wrong. Check your connection and try again.</span>';
+  b.classList.add('visible');
+}
+
+async function getFeedback(){
+  const sid=document.getElementById('ss').value,att=document.getElementById('att').value.trim();
+  if(!sid||!att){alert('Please select a skill and write your attempt first.');return;}
+  const k=SK.find(s=>s.id===parseInt(sid)),src=document.getElementById('src').value.trim();
+  load('fr',k.a);
+  try{res('fr',await api(AS,`Skill being practiced: ${k.name}\nDefinition: ${k.def}\nSource text: ${src||'None provided'}\nStudent attempt: ${att}\n\nGive feedback following your guidelines.`),k.a);}
+  catch{err('fr');}
+}
+
+async function askQ(){
+  const q=document.getElementById('aq').value.trim();
+  if(!q){alert('Please write a question first.');return;}
+  load('qr','#1A9E8F');
+  try{res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F');}
+  catch{err('qr');}
+}
+
+async function askMLA(){
+  const q=document.getElementById('mq').value.trim();
+  if(!q){alert('Please write an MLA question first.');return;}
+  load('mr','#1A6B4A');
+  try{res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A');}
+  catch{err('mr');}
+}
+
+function initObs(){
+  const secs=document.querySelectorAll('section'),lnks=document.querySelectorAll('.nl a');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        const id=e.target.id;
+        lnks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+      }
+    });
+  },{threshold:.07});
+  secs.forEach(s=>obs.observe(s));
+}
+
+document.addEventListener('DOMContentLoaded',()=>{buildRef();buildLess();initObs();});
+</script>
+</body>
+</html>
