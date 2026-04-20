@@ -352,7 +352,16 @@ async function api(sys, msg) {
   }
 
   if (!r.ok) {
-    throw new Error(data.error || data.details || JSON.stringify(data));
+    const errorMessage =
+  typeof data.error === "string"
+    ? data.error
+    : data.error
+    ? JSON.stringify(data.error)
+    : data.details
+    ? JSON.stringify(data.details)
+    : JSON.stringify(data);
+
+throw new Error(errorMessage);
   }
 
   if (!data.content || !Array.isArray(data.content)) {
