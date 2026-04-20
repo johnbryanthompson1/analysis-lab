@@ -79,7 +79,7 @@
     textarea:focus{outline:none;border-color:var(--c4)}
     select{width:100%;border:1.5px solid #E0D8D0;border-radius:8px;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--body);background:#FAFAF8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;appearance:none;cursor:pointer}
     select:focus{outline:none;border-color:var(--c4)}
-    .fb{border-radius:10px;padding:22px 24px;margin-top:20px;font-size:.97rem;line-height:1.72;border-left:4px solid var(--fc,var(--c4));background:#F8FFFE;display:none}
+    .fb{border-radius:10px;padding:22px 24px;margin-top:20px;font-size:.97rem;line-height:1.72;border-left:4px solid var(--fc,var(--c4));background:#F8FFFE;display:none;white-space:pre-wrap;word-break:break-word}
     .fb.visible{display:block;animation:fu .3s ease}
     .lm{color:#888;font-style:italic;display:flex;align-items:center;gap:10px}
     .sp{width:18px;height:18px;border:2px solid #ddd;border-top-color:var(--c4);border-radius:50%;animation:spin .75s linear infinite;display:inline-block;flex-shrink:0}
@@ -117,6 +117,7 @@
     </div>
   </div>
 </nav>
+
 <div id="top" class="hero">
   <div class="hi">
     <h1>The <em>Analysis</em> Lab</h1>
@@ -130,13 +131,16 @@
     </div>
   </div>
 </div>
+
 <section id="reference" aria-label="Reference Guide">
   <div class="slbl">Section 1</div>
   <h2 class="stitle">Reference Guide</h2>
   <p class="sintro">Eight skills. Every strong analytical essay uses all of them. Learn what each one is, see it in action, and know what to watch out for.</p>
   <div class="grid" id="skills-grid"></div>
 </section>
+
 <div class="sep"></div>
+
 <section id="lessons" aria-label="Interactive Lessons">
   <div class="slbl">Section 2</div>
   <h2 class="stitle">Interactive Lessons</h2>
@@ -144,7 +148,9 @@
   <div class="tnav" id="ltabs" role="tablist" style="--ta:var(--c4)"></div>
   <div id="lpanels"></div>
 </section>
+
 <div class="sep"></div>
+
 <section id="practice" aria-label="Practice Tool">
   <div class="slbl">Section 3</div>
   <h2 class="stitle">Practice Tool</h2>
@@ -153,6 +159,7 @@
     <button class="tb active" role="tab" aria-selected="true" onclick="swP('pf',this)">Get Feedback on My Writing</button>
     <button class="tb" role="tab" aria-selected="false" onclick="swP('pq',this)">Ask a Question</button>
   </div>
+
   <div id="pf" class="tp active pm">
     <div class="fg"><label class="fl" for="ss">Which skill are you practicing?</label><select id="ss"><option value="">— Choose a skill —</option></select></div>
     <div class="fg"><label class="fl" for="src">Paste your source text here (optional)</label><textarea id="src" rows="4" placeholder="Paste the passage you are analyzing, or leave this blank."></textarea></div>
@@ -160,13 +167,16 @@
     <button class="btn" style="--bc:var(--c4)" onclick="getFeedback()">Get Feedback</button>
     <div class="fb" id="fr" role="status" aria-live="polite"></div>
   </div>
+
   <div id="pq" class="tp pm">
     <div class="fg"><label class="fl" for="aq">Ask a question about analysis</label><textarea id="aq" rows="4" placeholder="Ask anything about claims, evidence, elaboration, counterclaims, synthesis, or conclusions."></textarea></div>
     <button class="btn" style="--bc:var(--c5)" onclick="askQ()">Ask</button>
     <div class="fb" id="qr" role="status" aria-live="polite" style="--fc:var(--c5);background:#F0FDFA;"></div>
   </div>
 </section>
+
 <div class="sep"></div>
+
 <section id="mla" aria-label="MLA and Citation Skills">
   <div class="slbl">Section 4</div>
   <h2 class="stitle">MLA &amp; Citation</h2>
@@ -176,6 +186,7 @@
     <button class="tb" role="tab" aria-selected="false" onclick="swM('wc',this)">Works Cited</button>
     <button class="tb" role="tab" aria-selected="false" onclick="swM('mlac',this)">Ask the Coach</button>
   </div>
+
   <div id="it" class="tp active">
     <div class="mc"><div class="mrt">Rule 1 — The Basic Format</div><div class="mrx">Place the author's last name and page number in parentheses at the end of the sentence, before the period. No comma between name and page number.</div><div class="me">Golding depicts the conch as a symbol of order that the boys quickly abandon (Golding 16).</div><div class="merr"><div class="mel">Common Error</div>(Golding, 16) | (Golding p. 16) | placing the citation after the period.</div><div class="mw">The parenthetical is part of the sentence — it lives inside the period, not after it.</div></div>
     <div class="mc"><div class="mrt">Rule 2 — Signal Phrases (No Quote Bombs)</div><div class="mrx">Never drop a quote into a sentence without a signal phrase that names the author or source. Integrate the quote grammatically.</div><div class="me">As Golding suggests, the boys treat the conch as "a worthy plaything" rather than a tool of governance (16).</div><div class="merr"><div class="mel">Common Error — Quote Bomb</div>"A worthy plaything" (Golding 16). The boys no longer respected the conch.</div><div class="mw">Every quote needs a host sentence. An unintroduced quote breaks the reader's trust and reads as careless.</div></div>
@@ -183,6 +194,7 @@
     <div class="mc"><div class="mrt">Rule 4 — Block Quotations (Long Quotes)</div><div class="mrx">If a quote runs longer than four lines of prose, format it as a block quotation: start on a new line, indent one inch, no quotation marks, citation after final punctuation.</div><div class="me">The boys' descent begins almost immediately after their arrival:<span class="bqi">Ralph looked at the two boys with the conch and frowned.<br>The afternoon had advanced, and even the shadows on the<br>mountain had moved toward the sea. Ralph did not understand<br>what the darkness behind him was. (Golding 34)</span></div><div class="merr"><div class="mel">Common Error</div>Putting quotation marks around a block quote, or using block format for short quotes.</div><div class="mw">Block formatting signals the passage is long enough to stand alone — the format itself argues for the quote's importance.</div></div>
     <div class="oc"><p>For every other MLA question, go straight to the source.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — MLA Guide <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
+
   <div id="wc" class="tp">
     <div class="mc"><div class="mrt">Book — Single Author</div><div class="mrx">Format: Last, First. <em>Title of Book.</em> Publisher, Year.</div><div class="me">Golding, William. Lord of the Flies. Faber and Faber, 1954.</div><div class="merr"><div class="mel">Common Error</div>Golding, William. "Lord of the Flies." Faber and Faber, 1954. (Books are italicized, not in quotation marks.)</div><div class="mw">Italics signal a standalone work. Quotation marks signal a work within a larger work.</div></div>
     <div class="mc"><div class="mrt">Article in a Journal or Magazine</div><div class="mrx">Format: Last, First. "Article Title." <em>Journal Name,</em> vol. #, no. #, Year, pp. #–#.</div><div class="me">Hynes, Samuel. "Several Interpretations of Lord of the Flies." English Journal, vol. 55, no. 2, 1966, pp. 40–45.</div><div class="merr"><div class="mel">Common Error</div>Forgetting volume and issue numbers, or italicizing the article title instead of the journal name.</div><div class="mw">The article title gets quotes; the journal it lives in gets italics — same logic as book versus chapter.</div></div>
@@ -191,13 +203,16 @@
     <div class="mc"><div class="mrt">Works Cited Page — Formatting Rules</div><div class="mrx">These rules govern the entire page, not just individual entries.</div><ul class="cl"><li>"Works Cited" is centered at the top — not bold, not underlined, not in quotes</li><li>Entries are listed alphabetically by the author's last name (or title if no author)</li><li>The entire page is double-spaced, including the space between entries</li><li>Each entry uses a hanging indent: first line flush left, subsequent lines indented half an inch</li><li>The Works Cited page is its own page at the end — never tacked onto the last paragraph</li></ul></div>
     <div class="oc"><p>See every Works Cited entry type at Purdue OWL.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_works_cited_page_basic_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — Works Cited <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
+
   <div id="mlac" class="tp pm">
     <div class="fg"><label class="fl" for="mq">Ask an MLA or citation question</label><textarea id="mq" rows="4" placeholder="Ask anything about in-text citations, Works Cited entries, block quotes, signal phrases, or MLA formatting rules."></textarea></div>
     <button class="btn" style="--bc:var(--mla)" onclick="askMLA()">Ask the Coach</button>
     <div class="fb" id="mr" role="status" aria-live="polite" style="--fc:var(--mla);background:#F0FAF6;"></div>
   </div>
 </section>
+
 <footer>The Analysis Lab &nbsp;·&nbsp; Concordia International School Shanghai &nbsp;·&nbsp; High School English</footer>
+
 <script>
 const SK=[
   {id:1,name:"Claims",icon:"📌",a:"#C0392B",al:"#FDECEA",def:"A direct, arguable assertion about a text or topic. Not a fact, not a question. It must be debatable.",ex:`In Lord of the Flies, <span class="hl" style="background:#FDECEA;color:#C0392B;">Golding argues that civilization is a fragile construct that collapses under fear</span> — not a given, but a performance that requires consent and authority to sustain.`,wo:"Stating a fact or plot summary instead of a claim. If it cannot be disagreed with, it is not a claim.",ls:{w:"Mira leaves her village. She has to decide if she wants to go back.",wn:"This is plot summary. It tells us what happened, not what it means.",s:"Mira's reluctance to return reveals that survival strips away not just comfort, but the very idea of home as a place of safety.",sn:"This is a claim: it makes an arguable interpretive assertion about what the character's choice means thematically.",r:"Write a one-sentence claim about Mira. Make sure someone could reasonably disagree with it."}},
@@ -235,26 +250,42 @@ HARD RULES:
 function buildRef(){
   const g=document.getElementById('skills-grid'),s=document.getElementById('ss');
   SK.forEach(k=>{
-    const c=document.createElement('div');c.className='sc';c.style.setProperty('--a',k.a);
+    const c=document.createElement('div');
+    c.className='sc';
+    c.style.setProperty('--a',k.a);
     c.innerHTML=`<div class="ch"><div class="ci" style="background:${k.al};color:${k.a}">${k.icon}</div><div><div class="cn">Skill ${k.id}</div><div class="ct">${k.name}</div></div></div><div class="cd">${k.def}</div><div class="ce">${k.ex}</div><div class="wo">${k.wo}</div>`;
     g.appendChild(c);
-    const o=document.createElement('option');o.value=k.id;o.textContent=`${k.id}. ${k.name}`;s.appendChild(o);
+
+    const o=document.createElement('option');
+    o.value=k.id;
+    o.textContent=`${k.id}. ${k.name}`;
+    s.appendChild(o);
   });
 }
 
 function buildLess(){
   const nav=document.getElementById('ltabs'),pan=document.getElementById('lpanels');
   SK.forEach((k,i)=>{
-    const b=document.createElement('button');b.className='tb'+(i===0?' active':'');
-    b.setAttribute('role','tab');b.setAttribute('aria-selected',i===0?'true':'false');b.textContent=k.name;
+    const b=document.createElement('button');
+    b.className='tb'+(i===0?' active':'');
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected',i===0?'true':'false');
+    b.textContent=k.name;
     b.onclick=()=>{
-      document.querySelectorAll('#ltabs .tb').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+      document.querySelectorAll('#ltabs .tb').forEach(x=>{
+        x.classList.remove('active');
+        x.setAttribute('aria-selected','false');
+      });
       document.querySelectorAll('#lpanels .tp').forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');b.setAttribute('aria-selected','true');
+      b.classList.add('active');
+      b.setAttribute('aria-selected','true');
       document.getElementById('lp'+i).classList.add('active');
     };
     nav.appendChild(b);
-    const p=document.createElement('div');p.className='tp'+(i===0?' active':'');p.id='lp'+i;
+
+    const p=document.createElement('div');
+    p.className='tp'+(i===0?' active':'');
+    p.id='lp'+i;
     p.innerHTML=`<div class="ls" id="ls${i}" data-step="1"><div id="sc${i}">${rStep(k,1)}</div><div class="snav"><button class="bg" id="pv${i}" onclick="chStep(${i},-1)" disabled>← Previous</button><span class="sind" id="si${i}">Step 1 of 4</span><button class="btn" id="nx${i}" style="--bc:${k.a}" onclick="chStep(${i},1)">Next →</button></div></div>`;
     pan.appendChild(p);
   });
@@ -274,39 +305,63 @@ function chStep(i,d){
   document.getElementById('sc'+i).innerHTML=rStep(SK[i],nxt);
   document.getElementById('si'+i).textContent=`Step ${nxt} of 4`;
   document.getElementById('pv'+i).disabled=nxt===1;
-  const nb=document.getElementById('nx'+i);nb.disabled=nxt===4;nb.textContent=nxt===4?'Done ✓':'Next →';
+  const nb=document.getElementById('nx'+i);
+  nb.disabled=nxt===4;
+  nb.textContent=nxt===4?'Done ✓':'Next →';
 }
 
 function swP(id,btn){
-  document.querySelectorAll('#practice .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#practice .tnav .tb').forEach(b=>{
+    b.classList.remove('active');
+    b.setAttribute('aria-selected','false');
+  });
   document.querySelectorAll('#practice .tp').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');btn.setAttribute('aria-selected','true');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
   document.getElementById(id).classList.add('active');
 }
 
 function swM(id,btn){
-  document.querySelectorAll('#mla .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#mla .tnav .tb').forEach(b=>{
+    b.classList.remove('active');
+    b.setAttribute('aria-selected','false');
+  });
   document.querySelectorAll('#mla .tp').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');btn.setAttribute('aria-selected','true');
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected','true');
   document.getElementById(id).classList.add('active');
 }
 
-// ── API CALL WITH CORS FIX ──────────────────────────────
-async function api(sys,msg){
-  const r=await fetch("https://analysis-lab-proxy-6ruyqk111-john-s-team2.vercel.app/api/proxy",{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-      model:"claude-sonnet-4-5",
-      max_tokens:1000,
-      system:sys,
-      messages:[{role:"user",content:msg}]
+async function api(sys, msg) {
+  const r = await fetch("https://analysis-lab-proxy.vercel.app/api/proxy", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-3-5-sonnet-latest",
+      max_tokens: 1000,
+      system: sys,
+      messages: [{ role: "user", content: msg }]
     })
   });
-  if(!r.ok)throw new Error(r.status);
-  const d=await r.json();
-  return d.content.map(b=>b.text||'').join('');
+
+  let data;
+  try {
+    data = await r.json();
+  } catch {
+    throw new Error(`Non-JSON response from proxy. Status: ${r.status}`);
+  }
+
+  if (!r.ok) {
+    throw new Error(data.error || data.details || JSON.stringify(data));
+  }
+
+  if (!data.content || !Array.isArray(data.content)) {
+    throw new Error("Unexpected response format from API.");
+  }
+
+  return data.content.map(b => b.text || "").join("");
 }
+
 function load(id,col){
   const b=document.getElementById(id);
   if(col)b.style.setProperty('--fc',col);
@@ -321,9 +376,10 @@ function res(id,txt,col){
   b.classList.add('visible');
 }
 
-function err(id){
+function err(id,message="Something went wrong. Check your connection and try again."){
   const b=document.getElementById(id);
-  b.innerHTML='<span style="color:#C0392B;">Something went wrong. Check your connection and try again.</span>';
+  b.textContent=message;
+  b.style.color='#C0392B';
   b.classList.add('visible');
 }
 
@@ -332,24 +388,33 @@ async function getFeedback(){
   if(!sid||!att){alert('Please select a skill and write your attempt first.');return;}
   const k=SK.find(s=>s.id===parseInt(sid)),src=document.getElementById('src').value.trim();
   load('fr',k.a);
-  try{res('fr',await api(AS,`Skill being practiced: ${k.name}\nDefinition: ${k.def}\nSource text: ${src||'None provided'}\nStudent attempt: ${att}\n\nGive feedback following your guidelines.`),k.a);}
-  catch{err('fr');}
+  try{
+    res('fr',await api(AS,`Skill being practiced: ${k.name}\nDefinition: ${k.def}\nSource text: ${src||'None provided'}\nStudent attempt: ${att}\n\nGive feedback following your guidelines.`),k.a);
+  } catch(e){
+    err('fr',e.message);
+  }
 }
 
 async function askQ(){
   const q=document.getElementById('aq').value.trim();
   if(!q){alert('Please write a question first.');return;}
   load('qr','#1A9E8F');
-  try{res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F');}
-  catch{err('qr');}
+  try{
+    res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F');
+  } catch(e){
+    err('qr',e.message);
+  }
 }
 
 async function askMLA(){
   const q=document.getElementById('mq').value.trim();
   if(!q){alert('Please write an MLA question first.');return;}
   load('mr','#1A6B4A');
-  try{res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A');}
-  catch{err('mr');}
+  try{
+    res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A');
+  } catch(e){
+    err('mr',e.message);
+  }
 }
 
 function initObs(){
@@ -366,7 +431,11 @@ function initObs(){
   secs.forEach(s=>obs.observe(s));
 }
 
-document.addEventListener('DOMContentLoaded',()=>{buildRef();buildLess();initObs();});
+document.addEventListener('DOMContentLoaded',()=>{
+  buildRef();
+  buildLess();
+  initObs();
+});
 </script>
 </body>
 </html>
