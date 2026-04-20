@@ -376,10 +376,15 @@ function res(id,txt,col){
   b.classList.add('visible');
 }
 
-function err(id,message="Something went wrong. Check your connection and try again."){
-  const b=document.getElementById(id);
-  b.textContent=message;
-  b.style.color='#C0392B';
+function err(id, message="Something went wrong. Check your connection and try again."){
+  const b = document.getElementById(id);
+
+  const msg = typeof message === "string"
+    ? message
+    : JSON.stringify(message, null, 2);
+
+  b.textContent = msg;
+  b.style.color = '#C0392B';
   b.classList.add('visible');
 }
 
