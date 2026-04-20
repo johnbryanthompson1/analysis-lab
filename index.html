@@ -407,7 +407,7 @@ async function askQ(){
   try{
     res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F');
   } catch(e){
-    err('qr',e.message);
+    err('qr', e.message || e);
   }
 }
 
@@ -418,7 +418,7 @@ async function askMLA(){
   try{
     res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A');
   } catch(e){
-    err('mr',e.message);
+    err('mr', e.message || e);
   }
 }
 
