@@ -337,7 +337,7 @@ async function api(sys, msg) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: "model: "claude-sonnet-4-6",",
+      model: "model: "claude-sonnet-4-6",
       max_tokens: 1000,
       system: sys,
       messages: [{ role: "user", content: msg }]
