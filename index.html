@@ -103,6 +103,30 @@
     .bqi{padding-left:48px;font-style:italic;margin-top:8px;display:block}
     footer{background:var(--nav-bg);color:rgba(245,236,215,.55);text-align:center;padding:28px 24px;font-size:.83rem}
     @media(max-width:600px){.ni{padding:10px 16px}section{padding:52px 16px}.oc{flex-direction:column}.ls{padding:22px 18px}}
+
+    /* ─── Model Essay Explorer ─── */
+    .me-outer{background:var(--card-bg);border-radius:var(--r);box-shadow:0 4px 28px rgba(0,0,0,.09);overflow:hidden}
+    .me-tabs{padding:0 28px;border-bottom:2px solid #E8E0D8;margin-bottom:0;background:#FAFAF7}
+    .me-panel{display:none;padding:32px 36px 28px;animation:fu .22s ease}
+    .me-panel.active{display:block}
+    .me-hint{font-size:.84rem;color:#aaa;font-style:italic;margin-bottom:22px}
+    .me-hint::before{content:"👆  ";font-style:normal}
+    .me-para{font-size:1.04rem;line-height:2.08;color:#2a2a2a;font-family:Georgia,'Times New Roman',serif;letter-spacing:.01em;margin-bottom:4px}
+    .me-span{border-radius:3px;padding:2px 3px;cursor:pointer;transition:filter .15s,outline .15s;outline:2px solid transparent}
+    .me-span:hover{filter:brightness(.88)}
+    .me-span.lit{filter:brightness(.82);outline:2px solid var(--sc)}
+    .me-callout{display:none;margin:16px 0 8px;border-left:4px solid var(--cc,#ccc);background:var(--cb,#f9f9f9);border-radius:0 10px 10px 0;padding:18px 22px;animation:fu .22s ease}
+    .me-callout.visible{display:block}
+    .me-clabel{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cc,#888);margin-bottom:5px}
+    .me-ctitle{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;color:var(--heading);margin-bottom:8px}
+    .me-cbody{font-size:.93rem;color:#444;line-height:1.72}
+    .me-ctip{background:#FFFDF4;border:1px solid #F0E68C;border-radius:6px;padding:10px 14px;font-size:.85rem;color:#5a4a00;margin-top:12px}
+    .me-ctip::before{content:"💡  "}
+    .me-legend{display:flex;flex-wrap:wrap;gap:8px;padding:18px 36px 22px;border-top:1px solid #EEE8E0;background:#FAFAF7}
+    .me-chip{display:inline-flex;align-items:center;gap:5px;font-size:.76rem;font-weight:700;color:var(--lc);background:var(--lb);border-radius:20px;padding:4px 11px 4px 8px;cursor:pointer;transition:filter .18s;user-select:none}
+    .me-chip:hover{filter:brightness(.9)}
+    .me-dot{width:8px;height:8px;border-radius:50%;background:var(--lc);flex-shrink:0}
+    @media(max-width:600px){.me-panel{padding:20px 18px 20px}.me-legend{padding:14px 18px 18px}}
   </style>
 </head>
 <body>
@@ -111,6 +135,7 @@
     <a href="#top" class="nb">The Analysis Lab</a>
     <div class="nl">
       <a href="#reference">Reference Guide</a>
+      <a href="#model-paragraphs">Model Essay</a>
       <a href="#lessons">Lessons</a>
       <a href="#practice">Practice</a>
       <a href="#mla">MLA &amp; Citation</a>
@@ -121,7 +146,7 @@
 <div id="top" class="hero">
   <div class="hi">
     <h1>The <em>Analysis</em> Lab</h1>
-    <p>Master the moves that make writing powerful — from building a claim to drawing out its implications for the reader and the world.</p>
+    <p>Master the moves that make writing powerful, from building a claim to drawing out its implications for the reader and the world.</p>
     <div class="pills">
       <span class="pill">📌 Claims &amp; Evidence</span>
       <span class="pill">🔍 Elaboration</span>
@@ -141,10 +166,24 @@
 
 <div class="sep"></div>
 
+<!-- MODEL ESSAY EXPLORER -->
+<section id="model" aria-label="Model Essay Explorer">
+  <div class="slbl">Section 2</div>
+  <h2 class="stitle">Model Essay Explorer</h2>
+  <p class="sintro">Three paragraphs. Every analytical move labeled. Tap any highlighted phrase to see what it is doing and why it works.</p>
+
+  <div class="me-outer">
+    <div class="tnav me-tabs" id="me-tabs" role="tablist"></div>
+    <div id="me-panels"></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
 <section id="lessons" aria-label="Interactive Lessons">
   <div class="slbl">Section 2</div>
   <h2 class="stitle">Interactive Lessons</h2>
-  <p class="sintro">One lesson for each skill. Read a passage, see a weak example, then a strong one — and reflect on what changed.</p>
+  <p class="sintro">One lesson for each skill. Read a passage, see a weak example, then a strong one, and reflect on what changed.</p>
   <div class="tnav" id="ltabs" role="tablist" style="--ta:var(--c4)"></div>
   <div id="lpanels"></div>
 </section>
@@ -154,16 +193,16 @@
 <section id="practice" aria-label="Practice Tool">
   <div class="slbl">Section 3</div>
   <h2 class="stitle">Practice Tool</h2>
-  <p class="sintro">Get real feedback on your own writing, or ask a question about analysis. The coach will not write for you — but it will tell you exactly what to work on.</p>
+  <p class="sintro">Get real feedback on your own writing, or ask a question about analysis. The coach will not write for you, but it will tell you exactly what to work on.</p>
   <div class="tnav" role="tablist" style="--ta:var(--c4)">
     <button class="tb active" role="tab" aria-selected="true" onclick="swP('pf',this)">Get Feedback on My Writing</button>
     <button class="tb" role="tab" aria-selected="false" onclick="swP('pq',this)">Ask a Question</button>
   </div>
 
   <div id="pf" class="tp active pm">
-    <div class="fg"><label class="fl" for="ss">Which skill are you practicing?</label><select id="ss"><option value="">— Choose a skill —</option></select></div>
+    <div class="fg"><label class="fl" for="ss">Which skill are you practicing?</label><select id="ss"><option value=""> Choose a skill </option></select></div>
     <div class="fg"><label class="fl" for="src">Paste your source text here (optional)</label><textarea id="src" rows="4" placeholder="Paste the passage you are analyzing, or leave this blank."></textarea></div>
-    <div class="fg"><label class="fl" for="att">Write your attempt here</label><textarea id="att" rows="6" placeholder="Write your analysis attempt. Take your time — the more honest your attempt, the more useful the feedback."></textarea></div>
+    <div class="fg"><label class="fl" for="att">Write your attempt here</label><textarea id="att" rows="6" placeholder="Write your analysis attempt. Take your time, the more honest your attempt, the more useful the feedback."></textarea></div>
     <button class="btn" style="--bc:var(--c4)" onclick="getFeedback()">Get Feedback</button>
     <div class="fb" id="fr" role="status" aria-live="polite"></div>
   </div>
@@ -180,7 +219,7 @@
 <section id="mla" aria-label="MLA and Citation Skills">
   <div class="slbl">Section 4</div>
   <h2 class="stitle">MLA &amp; Citation</h2>
-  <p class="sintro">Citation is not busywork — it is how you show your reader that your thinking is grounded in real sources. Learn the rules, then go deeper at Purdue OWL.</p>
+  <p class="sintro">Citation is not busywork, it is how you show your reader that your thinking is grounded in real sources. Learn the rules, then go deeper at Purdue OWL.</p>
   <div class="tnav" role="tablist" style="--ta:var(--mla)">
     <button class="tb active" role="tab" aria-selected="true" onclick="swM('it',this)">In-Text Citations</button>
     <button class="tb" role="tab" aria-selected="false" onclick="swM('wc',this)">Works Cited</button>
@@ -188,20 +227,20 @@
   </div>
 
   <div id="it" class="tp active">
-    <div class="mc"><div class="mrt">Rule 1 — The Basic Format</div><div class="mrx">Place the author's last name and page number in parentheses at the end of the sentence, before the period. No comma between name and page number.</div><div class="me">Golding depicts the conch as a symbol of order that the boys quickly abandon (Golding 16).</div><div class="merr"><div class="mel">Common Error</div>(Golding, 16) | (Golding p. 16) | placing the citation after the period.</div><div class="mw">The parenthetical is part of the sentence — it lives inside the period, not after it.</div></div>
-    <div class="mc"><div class="mrt">Rule 2 — Signal Phrases (No Quote Bombs)</div><div class="mrx">Never drop a quote into a sentence without a signal phrase that names the author or source. Integrate the quote grammatically.</div><div class="me">As Golding suggests, the boys treat the conch as "a worthy plaything" rather than a tool of governance (16).</div><div class="merr"><div class="mel">Common Error — Quote Bomb</div>"A worthy plaything" (Golding 16). The boys no longer respected the conch.</div><div class="mw">Every quote needs a host sentence. An unintroduced quote breaks the reader's trust and reads as careless.</div></div>
-    <div class="mc"><div class="mrt">Rule 3 — No Author Known / Website Sources</div><div class="mrx">If no author is listed, use a shortened version of the title in quotation marks (for articles) or italics (for books or sites) in place of the author's name.</div><div class="me">Studies suggest that close reading improves retention ("Reading Strategies" 4).</div><div class="merr"><div class="mel">Common Error</div>Using the full title, using the URL, or skipping the citation entirely.</div><div class="mw">The shortened title points your reader to the correct Works Cited entry when no author exists.</div></div>
-    <div class="mc"><div class="mrt">Rule 4 — Block Quotations (Long Quotes)</div><div class="mrx">If a quote runs longer than four lines of prose, format it as a block quotation: start on a new line, indent one inch, no quotation marks, citation after final punctuation.</div><div class="me">The boys' descent begins almost immediately after their arrival:<span class="bqi">Ralph looked at the two boys with the conch and frowned.<br>The afternoon had advanced, and even the shadows on the<br>mountain had moved toward the sea. Ralph did not understand<br>what the darkness behind him was. (Golding 34)</span></div><div class="merr"><div class="mel">Common Error</div>Putting quotation marks around a block quote, or using block format for short quotes.</div><div class="mw">Block formatting signals the passage is long enough to stand alone — the format itself argues for the quote's importance.</div></div>
-    <div class="oc"><p>For every other MLA question, go straight to the source.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — MLA Guide <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="mc"><div class="mrt">Rule 1, The Basic Format</div><div class="mrx">Place the author's last name and page number in parentheses at the end of the sentence, before the period. No comma between name and page number.</div><div class="me">Golding depicts the conch as a symbol of order that the boys quickly abandon (Golding 16).</div><div class="merr"><div class="mel">Common Error</div>(Golding, 16) | (Golding p. 16) | placing the citation after the period.</div><div class="mw">The parenthetical is part of the sentence, it lives inside the period, not after it.</div></div>
+    <div class="mc"><div class="mrt">Rule 2, Signal Phrases (No Quote Bombs)</div><div class="mrx">Never drop a quote into a sentence without a signal phrase that names the author or source. Integrate the quote grammatically.</div><div class="me">As Golding suggests, the boys treat the conch as "a worthy plaything" rather than a tool of governance (16).</div><div class="merr"><div class="mel">Common Error, Quote Bomb</div>"A worthy plaything" (Golding 16). The boys no longer respected the conch.</div><div class="mw">Every quote needs a host sentence. An unintroduced quote breaks the reader's trust and reads as careless.</div></div>
+    <div class="mc"><div class="mrt">Rule 3, No Author Known / Website Sources</div><div class="mrx">If no author is listed, use a shortened version of the title in quotation marks (for articles) or italics (for books or sites) in place of the author's name.</div><div class="me">Studies suggest that close reading improves retention ("Reading Strategies" 4).</div><div class="merr"><div class="mel">Common Error</div>Using the full title, using the URL, or skipping the citation entirely.</div><div class="mw">The shortened title points your reader to the correct Works Cited entry when no author exists.</div></div>
+    <div class="mc"><div class="mrt">Rule 4, Block Quotations (Long Quotes)</div><div class="mrx">If a quote runs longer than four lines of prose, format it as a block quotation: start on a new line, indent one inch, no quotation marks, citation after final punctuation.</div><div class="me">The boys' descent begins almost immediately after their arrival:<span class="bqi">Ralph looked at the two boys with the conch and frowned.<br>The afternoon had advanced, and even the shadows on the<br>mountain had moved toward the sea. Ralph did not understand<br>what the darkness behind him was. (Golding 34)</span></div><div class="merr"><div class="mel">Common Error</div>Putting quotation marks around a block quote, or using block format for short quotes.</div><div class="mw">Block formatting signals the passage is long enough to stand alone, the format itself argues for the quote's importance.</div></div>
+    <div class="oc"><p>For every other MLA question, go straight to the source.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL, MLA Guide <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 
   <div id="wc" class="tp">
-    <div class="mc"><div class="mrt">Book — Single Author</div><div class="mrx">Format: Last, First. <em>Title of Book.</em> Publisher, Year.</div><div class="me">Golding, William. Lord of the Flies. Faber and Faber, 1954.</div><div class="merr"><div class="mel">Common Error</div>Golding, William. "Lord of the Flies." Faber and Faber, 1954. (Books are italicized, not in quotation marks.)</div><div class="mw">Italics signal a standalone work. Quotation marks signal a work within a larger work.</div></div>
-    <div class="mc"><div class="mrt">Article in a Journal or Magazine</div><div class="mrx">Format: Last, First. "Article Title." <em>Journal Name,</em> vol. #, no. #, Year, pp. #–#.</div><div class="me">Hynes, Samuel. "Several Interpretations of Lord of the Flies." English Journal, vol. 55, no. 2, 1966, pp. 40–45.</div><div class="merr"><div class="mel">Common Error</div>Forgetting volume and issue numbers, or italicizing the article title instead of the journal name.</div><div class="mw">The article title gets quotes; the journal it lives in gets italics — same logic as book versus chapter.</div></div>
-    <div class="mc"><div class="mrt">Website / Webpage</div><div class="mrx">Format: Last, First (if known). "Page Title." <em>Website Name,</em> Day Month Year, URL.</div><div class="me">Brizee, Allen. "MLA Formatting and Style Guide." Purdue Online Writing Lab, 2 Mar. 2022, owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html.</div><div class="merr"><div class="mel">Common Error</div>Listing only the homepage URL, omitting the author, or including "https://" (MLA omits the protocol).</div><div class="mw">A bare URL tells the reader nothing — the full entry gives them every tool to verify the source.</div></div>
-    <div class="mc"><div class="mrt">Chapter in an Edited Collection</div><div class="mrx">Format: Last, First. "Chapter Title." <em>Book Title,</em> edited by First Last, Publisher, Year, pp. #–#.</div><div class="me">Rosenfield, Claire. "Men of a Smaller Growth." Lord of the Flies: A Casebook, edited by James R. Baker, Prentice Hall, 1988, pp. 35–51.</div><div class="merr"><div class="mel">Common Error</div>Treating the chapter like a standalone book, or omitting the editor's name.</div><div class="mw">The editor curated the collection — their name is part of the full record of the source.</div></div>
-    <div class="mc"><div class="mrt">Works Cited Page — Formatting Rules</div><div class="mrx">These rules govern the entire page, not just individual entries.</div><ul class="cl"><li>"Works Cited" is centered at the top — not bold, not underlined, not in quotes</li><li>Entries are listed alphabetically by the author's last name (or title if no author)</li><li>The entire page is double-spaced, including the space between entries</li><li>Each entry uses a hanging indent: first line flush left, subsequent lines indented half an inch</li><li>The Works Cited page is its own page at the end — never tacked onto the last paragraph</li></ul></div>
-    <div class="oc"><p>See every Works Cited entry type at Purdue OWL.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_works_cited_page_basic_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL — Works Cited <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="mc"><div class="mrt">Book, Single Author</div><div class="mrx">Format: Last, First. <em>Title of Book.</em> Publisher, Year.</div><div class="me">Golding, William. Lord of the Flies. Faber and Faber, 1954.</div><div class="merr"><div class="mel">Common Error</div>Golding, William. "Lord of the Flies." Faber and Faber, 1954. (Books are italicized, not in quotation marks.)</div><div class="mw">Italics signal a standalone work. Quotation marks signal a work within a larger work.</div></div>
+    <div class="mc"><div class="mrt">Article in a Journal or Magazine</div><div class="mrx">Format: Last, First. "Article Title." <em>Journal Name,</em> vol. #, no. #, Year, pp. #–#.</div><div class="me">Hynes, Samuel. "Several Interpretations of Lord of the Flies." English Journal, vol. 55, no. 2, 1966, pp. 40–45.</div><div class="merr"><div class="mel">Common Error</div>Forgetting volume and issue numbers, or italicizing the article title instead of the journal name.</div><div class="mw">The article title gets quotes; the journal it lives in gets italics, same logic as book versus chapter.</div></div>
+    <div class="mc"><div class="mrt">Website / Webpage</div><div class="mrx">Format: Last, First (if known). "Page Title." <em>Website Name,</em> Day Month Year, URL.</div><div class="me">Brizee, Allen. "MLA Formatting and Style Guide." Purdue Online Writing Lab, 2 Mar. 2022, owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_general_format.html.</div><div class="merr"><div class="mel">Common Error</div>Listing only the homepage URL, omitting the author, or including "https://" (MLA omits the protocol).</div><div class="mw">A bare URL tells the reader nothing, the full entry gives them every tool to verify the source.</div></div>
+    <div class="mc"><div class="mrt">Chapter in an Edited Collection</div><div class="mrx">Format: Last, First. "Chapter Title." <em>Book Title,</em> edited by First Last, Publisher, Year, pp. #–#.</div><div class="me">Rosenfield, Claire. "Men of a Smaller Growth." Lord of the Flies: A Casebook, edited by James R. Baker, Prentice Hall, 1988, pp. 35–51.</div><div class="merr"><div class="mel">Common Error</div>Treating the chapter like a standalone book, or omitting the editor's name.</div><div class="mw">The editor curated the collection, their name is part of the full record of the source.</div></div>
+    <div class="mc"><div class="mrt">Works Cited Page, Formatting Rules</div><div class="mrx">These rules govern the entire page, not just individual entries.</div><ul class="cl"><li>"Works Cited" is centered at the top, not bold, not underlined, not in quotes</li><li>Entries are listed alphabetically by the author's last name (or title if no author)</li><li>The entire page is double-spaced, including the space between entries</li><li>Each entry uses a hanging indent: first line flush left, subsequent lines indented half an inch</li><li>The Works Cited page is its own page at the end, never tacked onto the last paragraph</li></ul></div>
+    <div class="oc"><p>See every Works Cited entry type at Purdue OWL.</p><a href="https://owl.purdue.edu/owl/research_and_citation/mla_style/mla_formatting_and_style_guide/mla_works_cited_page_basic_format.html" target="_blank" rel="noopener noreferrer" class="ob">Visit Purdue OWL, Works Cited <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 11L11 2M11 2H5M11 2V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 
   <div id="mlac" class="tp pm">
@@ -215,21 +254,29 @@
 
 <script>
 const SK=[
-  {id:1,name:"Claims",icon:"📌",a:"#C0392B",al:"#FDECEA",def:"A direct, arguable assertion about a text or topic. Not a fact, not a question. It must be debatable.",ex:`In Lord of the Flies, <span class="hl" style="background:#FDECEA;color:#C0392B;">Golding argues that civilization is a fragile construct that collapses under fear</span> — not a given, but a performance that requires consent and authority to sustain.`,wo:"Stating a fact or plot summary instead of a claim. If it cannot be disagreed with, it is not a claim.",ls:{w:"Mira leaves her village. She has to decide if she wants to go back.",wn:"This is plot summary. It tells us what happened, not what it means.",s:"Mira's reluctance to return reveals that survival strips away not just comfort, but the very idea of home as a place of safety.",sn:"This is a claim: it makes an arguable interpretive assertion about what the character's choice means thematically.",r:"Write a one-sentence claim about Mira. Make sure someone could reasonably disagree with it."}},
-  {id:2,name:"Subclaims",icon:"🔗",a:"#E67E22",al:"#FEF0E3",def:"Supporting arguments that build the case for the main claim. Each subclaim focuses on one piece of the argument.",ex:`<span class="hl" style="background:#FEF0E3;color:#B85C10;">The boys' rapid descent into violence after Ralph loses authority demonstrates that social order depends on perceived legitimacy</span> — not just rules, but belief in the one who enforces them.`,wo:"Repeating the main claim in different words. A subclaim should add new ground, not re-cover old ground.",ls:{w:"Mira is sad about leaving. She also feels unsure about returning. These show that she is conflicted.",wn:"This restates the same point twice. Both sentences say the same thing. That is repetition, not a subclaim.",s:"Mira's refusal to look back at the floodline suggests that her conflict is not about the village itself, but about who she was before the water came.",sn:"This advances a specific angle: the conflict is about identity, not geography. That is a focused subclaim that opens new analytical territory.",r:"Write one subclaim that could support your claim from Lesson 1. What one piece of your argument does it prove?"}},
-  {id:3,name:"Counterclaims",icon:"⚖️",a:"#D4A017",al:"#FDF6E3",def:"An opposing argument the writer acknowledges and then refutes or qualifies. Shows intellectual honesty and strengthens credibility.",ex:`Some may argue that the boys' violence stems from their youth; <span class="hl" style="background:#FDF6E3;color:#9A7010;">however, Golding includes adult figures who fail equally, suggesting the problem is human nature, not age.</span>`,wo:"Ignoring the counterclaim entirely, or agreeing with it without rebuttal. Conceding is fine — but you must respond.",ls:{w:"Some people might think Mira should go back. But she should not.",wn:"The counterclaim is vague, and the rebuttal offers no reasoning. 'But she should not' is an assertion, not an argument.",s:"One might argue that returning would give Mira closure; yet the text suggests that closure requires a self that the flood has already changed — there is nothing left to close.",sn:"The counterclaim is specific and fair. The rebuttal engages it on its own terms, using the text's logic rather than simply dismissing it.",r:"Name one reasonable objection to your claim from Lesson 1. Then write one sentence responding to it."}},
-  {id:4,name:"Textual Evidence",icon:"📖",a:"#27AE60",al:"#E8F8EF",def:"A direct quote or close paraphrase from the text that supports a claim. Must be introduced, integrated grammatically, and cited.",ex:`When Ralph blows the conch and the boys assemble, their fragile order suggests that <span class="hl" style="background:#E8F8EF;color:#1A7A42;">"the shell was interesting and pretty and a worthy plaything"</span> (Golding 16), revealing how quickly symbolic authority becomes novelty.`,wo:'Dropping a quote without introduction or citation — the "quote bomb." A quote without a host sentence breaks the reader\'s flow.',ls:{w:'"She did not look at the water." Mira was afraid of what she might feel.',wn:"Classic quote bomb: the quote appears with no introduction and no citation. The reader has no idea who said it or why it matters.",s:'When Mira reaches the ridge, the narrator notes that "she did not look at the water, not even once" (7), a detail that transforms a simple action into an act of deliberate self-protection.',sn:"The quote has a host sentence, a citation, and is integrated grammatically. The reader knows where it comes from and why it is here.",r:"Find one sentence from the Mira passage that could serve as evidence for your claim. Write a sentence that introduces it properly and cite it."}},
-  {id:5,name:"Elaboration",icon:"🔍",a:"#1A9E8F",al:"#E3F6F5",def:"The explanation of HOW and WHY the evidence supports the claim. This is your analytical voice — not summary, not paraphrase.",ex:`<span class="hl" style="background:#E3F6F5;color:#127870;">The word "plaything" is key — it reduces the conch from a symbol of democratic order to a child's toy, foreshadowing the collapse of self-governance</span> that Golding builds across the novel.`,wo:"Summarizing what the quote says instead of analyzing what it means. If your elaboration could work without reading the text, it is probably summary.",ls:{w:"The quote says she did not look at the water. This shows she was scared of the flood.",wn:"This is summary: it restates what the quote already tells us. It does not explain what the choice reveals or why it matters.",s:'The phrase "not even once" escalates the detail from refusal into discipline — Mira is not simply avoiding the water, she is training herself not to want what she has already lost.',sn:"This elaboration names the specific language, explains the escalation in meaning, and draws out a psychological implication. That is the difference between summary and analysis.",r:"Take your evidence from Lesson 4 and write two sentences explaining what it means — not what it says. Focus on a specific word or phrase."}},
-  {id:6,name:"Evaluation of Evidence",icon:"🧪",a:"#2980B9",al:"#E3F1FB",def:"An honest assessment of the quality, reliability, or limitations of the evidence. Not all evidence is equally strong — say so.",ex:`While this single moment may not prove Golding's full thesis, <span class="hl" style="background:#E3F1FB;color:#1A5C8A;">it establishes a pattern that recurs throughout the novel, making it a reliable indicator of thematic intent</span> rather than an isolated image.`,wo:"Treating all evidence as equally strong without questioning any of it. Strong writers do not just present evidence — they assess it.",ls:{w:"This quote proves that Mira is afraid. It is very strong evidence for my argument.",wn:"The writer asserts the evidence is strong without explaining why. Saying evidence 'proves' something without reasoning is declaration, not evaluation.",s:"This moment is suggestive rather than definitive — it captures one gesture, not a pattern. Its strength lies in how it mirrors the opening scene, where Mira also avoids looking at something she cannot change.",sn:"The writer honestly qualifies the evidence, then explains what makes it meaningful: repetition creates a pattern, and patterns carry more weight than isolated moments.",r:"Look at the evidence you chose in Lesson 4. Write one honest sentence about its limitations — and one sentence defending its value anyway."}},
-  {id:7,name:"Synthesis",icon:"🧩",a:"#8E44AD",al:"#F4ECF7",def:"The weaving together of multiple claims and evidence into a unified argument. Synthesis shows how parts connect — it is not a list.",ex:`Taken together, the conch's decline, Roger's escalating cruelty, and Jack's tribal rhetoric <span class="hl" style="background:#F4ECF7;color:#6A2F8A;">form a triptych of institutional failure, each strand reinforcing Golding's warning</span> that order is not a default — it is a fragile agreement.`,wo:"Listing points sequentially instead of showing their relationship. If your synthesis could be replaced by 'first... second... third...', it is not synthesis yet.",ls:{w:"Mira does not look at the water. She also refuses to name the village. She walks faster near the border. These all show she is scared.",wn:"Three observations, each followed by the same conclusion. There is no synthesis here — just repetition of the same point with different examples.",s:"Mira's refusal to look, to name, and to slow her pace near the border are not three separate fears — they are one fear expressed through three acts of erasure, each one tightening the argument that return requires a grief she has not allowed herself.",sn:"The three details are connected by a governing idea and shown to be expressions of the same underlying logic, not separate proofs of the same claim.",r:"Take two or three pieces of evidence or subclaims from earlier lessons. Write one sentence that connects them — not lists them."}},
-  {id:8,name:"Conclusions & Implications",icon:"🌐",a:"#7D3C98",al:"#F5EEF8",def:"A closing argument that goes beyond restating the thesis. Strong conclusions name what is at stake and leave the reader with something to carry.",ex:`Golding's novel ultimately asks not whether civilization can collapse, but how quickly — and under what pressures — <span class="hl" style="background:#F5EEF8;color:#5D2A78;">we would allow it to. That question feels less hypothetical with every passing decade.</span>`,wo:'Ending with "In conclusion, I have shown..." — this restates the introduction and adds nothing. A conclusion should arrive somewhere new.',ls:{w:"In conclusion, I have shown that Mira is afraid to return to her village. This proves my thesis about survival and identity.",wn:"This restates the introduction without adding any new meaning. The reader ends where they began.",s:"Mira's story does not resolve the question of whether returning is right — it insists that the question itself may be wrong. Home, once lost, is not a place you go back to. It is something you rebuild or abandon. That choice belongs to every reader who has stood at the edge of something they cannot recover.",sn:"This conclusion broadens the argument beyond Mira, draws an implication, and ends with universal resonance. It arrives somewhere new.",r:"Write two or three sentences that conclude your argument about Mira. Do not restate your claim — push it forward. What does your argument mean for the reader?"}}
+  {id:1,name:"Claims",icon:"📌",a:"#C0392B",al:"#FDECEA",
+    def:'A direct, arguable assertion about a text or topic. Not a fact, not a question. It must be debatable. Also called a <strong>thesis sentence</strong> when it appears at the end of an introductory paragraph.',
+    ex:`In Lord of the Flies, <span class="hl" style="background:#FDECEA;color:#C0392B;">Golding argues that civilization is a fragile construct that collapses under fear</span>, not a given, but a performance that requires consent and authority to sustain.`,
+    wo:"Stating a fact or plot summary instead of a claim. If it cannot be disagreed with, it is not a claim.",
+    ls:{w:"Mira leaves her village. She has to decide if she wants to go back.",wn:"This is plot summary. It tells us what happened, not what it means.",s:"Mira's reluctance to return reveals that survival strips away not just comfort, but the very idea of home as a place of safety.",sn:"This is a claim: it makes an arguable interpretive assertion about what the character's choice means thematically.",r:"Write a one-sentence claim about Mira. Make sure someone could reasonably disagree with it."}},
+  {id:2,name:"Subclaims",icon:"🔗",a:"#E67E22",al:"#FEF0E3",
+    def:'Supporting arguments that build the case for the main claim. Each subclaim focuses on one piece of the argument. Also called a <strong>topic sentence</strong> when it opens a body paragraph.',
+    ex:`<span class="hl" style="background:#FEF0E3;color:#B85C10;">The boys' rapid descent into violence after Ralph loses authority demonstrates that social order depends on perceived legitimacy</span>, not just rules, but belief in the one who enforces them.`,
+    wo:"Repeating the main claim in different words. A subclaim should add new ground, not re-cover old ground.",
+    ls:{w:"Mira is sad about leaving. She also feels unsure about returning. These show that she is conflicted.",wn:"This restates the same point twice. Both sentences say the same thing. That is repetition, not a subclaim.",s:"Mira's refusal to look back at the floodline suggests that her conflict is not about the village itself, but about who she was before the water came.",sn:"This advances a specific angle: the conflict is about identity, not geography. That is a focused subclaim that opens new analytical territory.",r:"Write one subclaim that could support your claim from Lesson 1. What one piece of your argument does it prove?"}},
+  {id:3,name:"Counterclaims",icon:"⚖️",a:"#D4A017",al:"#FDF6E3",def:"An opposing argument the writer acknowledges and then refutes or qualifies. Shows intellectual honesty and strengthens credibility.",ex:`Some may argue that the boys' violence stems from their youth; <span class="hl" style="background:#FDF6E3;color:#9A7010;">however, Golding includes adult figures who fail equally, suggesting the problem is human nature, not age.</span>`,wo:"Ignoring the counterclaim entirely, or agreeing with it without rebuttal. Conceding is fine, but you must respond.",ls:{w:"Some people might think Mira should go back. But she should not.",wn:"The counterclaim is vague, and the rebuttal offers no reasoning. 'But she should not' is an assertion, not an argument.",s:"One might argue that returning would give Mira closure; yet the text suggests that closure requires a self that the flood has already changed, there is nothing left to close.",sn:"The counterclaim is specific and fair. The rebuttal engages it on its own terms, using the text's logic rather than simply dismissing it.",r:"Name one reasonable objection to your claim from Lesson 1. Then write one sentence responding to it."}},
+  {id:4,name:"Textual Evidence",icon:"📖",a:"#27AE60",al:"#E8F8EF",def:"A direct quote or close paraphrase from the text that supports a claim. Must be introduced, integrated grammatically, and cited.",ex:`When Ralph blows the conch and the boys assemble, their fragile order suggests that <span class="hl" style="background:#E8F8EF;color:#1A7A42;">"the shell was interesting and pretty and a worthy plaything"</span> (Golding 16), revealing how quickly symbolic authority becomes novelty.`,wo:'Dropping a quote without introduction or citation, the "quote bomb." A quote without a host sentence breaks the reader\'s flow.',ls:{w:'"She did not look at the water." Mira was afraid of what she might feel.',wn:"Classic quote bomb: the quote appears with no introduction and no citation. The reader has no idea who said it or why it matters.",s:'When Mira reaches the ridge, the narrator notes that "she did not look at the water, not even once" (7), a detail that transforms a simple action into an act of deliberate self-protection.',sn:"The quote has a host sentence, a citation, and is integrated grammatically. The reader knows where it comes from and why it is here.",r:"Find one sentence from the Mira passage that could serve as evidence for your claim. Write a sentence that introduces it properly and cite it."}},
+  {id:5,name:"Elaboration",icon:"🔍",a:"#1A9E8F",al:"#E3F6F5",def:"The explanation of HOW and WHY the evidence supports the claim. This is your analytical voice, not summary, not paraphrase.",ex:`<span class="hl" style="background:#E3F6F5;color:#127870;">The word "plaything" is key, it reduces the conch from a symbol of democratic order to a child's toy, foreshadowing the collapse of self-governance</span> that Golding builds across the novel.`,wo:"Summarizing what the quote says instead of analyzing what it means. If your elaboration could work without reading the text, it is probably summary.",ls:{w:"The quote says she did not look at the water. This shows she was scared of the flood.",wn:"This is summary: it restates what the quote already tells us. It does not explain what the choice reveals or why it matters.",s:'The phrase "not even once" escalates the detail from refusal into discipline, Mira is not simply avoiding the water, she is training herself not to want what she has already lost.',sn:"This elaboration names the specific language, explains the escalation in meaning, and draws out a psychological implication. That is the difference between summary and analysis.",r:"Take your evidence from Lesson 4 and write two sentences explaining what it means, not what it says. Focus on a specific word or phrase."}},
+  {id:6,name:"Evaluation of Evidence",icon:"🧪",a:"#2980B9",al:"#E3F1FB",def:"An honest assessment of the quality, reliability, or limitations of the evidence. Not all evidence is equally strong, say so.",ex:`While this single moment may not prove Golding's full thesis, <span class="hl" style="background:#E3F1FB;color:#1A5C8A;">it establishes a pattern that recurs throughout the novel, making it a reliable indicator of thematic intent</span> rather than an isolated image.`,wo:"Treating all evidence as equally strong without questioning any of it. Strong writers do not just present evidence, they assess it.",ls:{w:"This quote proves that Mira is afraid. It is very strong evidence for my argument.",wn:"The writer asserts the evidence is strong without explaining why. Saying evidence 'proves' something without reasoning is declaration, not evaluation.",s:"This moment is suggestive rather than definitive, it captures one gesture, not a pattern. Its strength lies in how it mirrors the opening scene, where Mira also avoids looking at something she cannot change.",sn:"The writer honestly qualifies the evidence, then explains what makes it meaningful: repetition creates a pattern, and patterns carry more weight than isolated moments.",r:"Look at the evidence you chose in Lesson 4. Write one honest sentence about its limitations, and one sentence defending its value anyway."}},
+  {id:7,name:"Synthesis",icon:"🧩",a:"#8E44AD",al:"#F4ECF7",def:"The weaving together of multiple claims and evidence into a unified argument. Synthesis shows how parts connect, it is not a list.",ex:`Taken together, the conch's decline, Roger's escalating cruelty, and Jack's tribal rhetoric <span class="hl" style="background:#F4ECF7;color:#6A2F8A;">form a triptych of institutional failure, each strand reinforcing Golding's warning</span> that order is not a default, it is a fragile agreement.`,wo:"Listing points sequentially instead of showing their relationship. If your synthesis could be replaced by 'first... second... third...', it is not synthesis yet.",ls:{w:"Mira does not look at the water. She also refuses to name the village. She walks faster near the border. These all show she is scared.",wn:"Three observations, each followed by the same conclusion. There is no synthesis here, just repetition of the same point with different examples.",s:"Mira's refusal to look, to name, and to slow her pace near the border are not three separate fears, they are one fear expressed through three acts of erasure, each one tightening the argument that return requires a grief she has not allowed herself.",sn:"The three details are connected by a governing idea and shown to be expressions of the same underlying logic, not separate proofs of the same claim.",r:"Take two or three pieces of evidence or subclaims from earlier lessons. Write one sentence that connects them, not lists them."}},
+  {id:8,name:"Conclusions & Implications",icon:"🌐",a:"#7D3C98",al:"#F5EEF8",def:"A closing argument that goes beyond restating the thesis. Strong conclusions name what is at stake and leave the reader with something to carry.",ex:`Golding's novel ultimately asks not whether civilization can collapse, but how quickly, and under what pressures, <span class="hl" style="background:#F5EEF8;color:#5D2A78;">we would allow it to. That question feels less hypothetical with every passing decade.</span>`,wo:'Ending with "In conclusion, I have shown...", this restates the introduction and adds nothing. A conclusion should arrive somewhere new.',ls:{w:"In conclusion, I have shown that Mira is afraid to return to her village. This proves my thesis about survival and identity.",wn:"This restates the introduction without adding any new meaning. The reader ends where they began.",s:"Mira's story does not resolve the question of whether returning is right, it insists that the question itself may be wrong. Home, once lost, is not a place you go back to. It is something you rebuild or abandon. That choice belongs to every reader who has stood at the edge of something they cannot recover.",sn:"This conclusion broadens the argument beyond Mira, draws an implication, and ends with universal resonance. It arrives somewhere new.",r:"Write two or three sentences that conclude your argument about Mira. Do not restate your claim, push it forward. What does your argument mean for the reader?"}}
 ];
 
-const PASS="The water had taken everything: the market stalls, the well, the cedar tree Mira had climbed as a child. She stood at the top of the ridge three days after the flood and looked at what remained — a smear of brown against the valley floor, still and featureless as a scar. The others spoke of returning, of salvaging timber and seed. Mira said nothing. She had already begun to understand that the village she knew had not been submerged. It had been replaced. That night, alone at the fire's edge, she turned not toward the valley but toward the dark line of the hills, and something in her posture — the set of her shoulders, the stillness of her hands — looked less like grief and more like a decision already made.";
+const PASS="The water had taken everything: the market stalls, the well, the cedar tree Mira had climbed as a child. She stood at the top of the ridge three days after the flood and looked at what remained, a smear of brown against the valley floor, still and featureless as a scar. The others spoke of returning, of salvaging timber and seed. Mira said nothing. She had already begun to understand that the village she knew had not been submerged. It had been replaced. That night, alone at the fire's edge, she turned not toward the valley but toward the dark line of the hills, and something in her posture, the set of her shoulders, the stillness of her hands, looked less like grief and more like a decision already made.";
 
 const AS=`You are an analysis coach for a high school English classroom. Your only job is to give feedback on student writing and answer genuine questions about analytical skills: claims, subclaims, counterclaims, textual evidence, elaboration, evaluation of evidence, synthesis, and conclusions with implications.
 
-HARD RULES — never break these under any circumstances:
+HARD RULES, never break these under any circumstances:
 1. You will never write any portion of an essay, paragraph, sentence, or analytical statement on the student's behalf. Not even one sentence. Not even as a demonstration. If asked, decline and redirect.
 2. You will never complete, continue, or improve a student's sentence by producing new analytical content. You may identify what is missing in general terms. You may not supply it.
 3. When giving feedback, identify one genuine strength and exactly two areas for improvement. For each area, describe what a stronger move would look like in general terms only. Do not demonstrate using the student's text.
@@ -247,6 +294,255 @@ HARD RULES:
 4. Always end your response with a one-sentence prompt directing the student to verify or explore further at Purdue OWL: owl.purdue.edu/owl/research_and_citation/mla_style
 5. Never use em dashes. Keep responses between 60 and 120 words. Be clear and direct.`;
 
+// ── SKILLS META (colors for the explorer) ──
+const SKILLS_META = {
+  claim:        { color:"#C0392B", bg:"#FDECEA", label:"Claim / Thesis Sentence" },
+  subclaim:     { color:"#E67E22", bg:"#FEF0E3", label:"Subclaim / Topic Sentence" },
+  context:      { color:"#27AE60", bg:"#E8F8EF", label:"Evidence Context" },
+  evidence:     { color:"#145A32", bg:"#C8EFDA", label:"Textual Evidence (MLA)" },
+  elaboration:  { color:"#1A9E8F", bg:"#E3F6F5", label:"Elaboration" },
+  evaluation:   { color:"#2980B9", bg:"#E3F1FB", label:"Evaluation of Evidence" },
+  counterclaim: { color:"#9A7010", bg:"#FDF6E3", label:"Counterclaim" },
+  rebuttal:     { color:"#4A7C59", bg:"#DFF5E8", label:"Rebuttal" },
+  synthesis:    { color:"#6A2F8A", bg:"#F4ECF7", label:"Synthesis" },
+  implication:  { color:"#5D2A78", bg:"#F5EEF8", label:"Implication / Conclusion" },
+};
+
+// ── MODEL ESSAY EXPLORER DATA ──
+
+const ME_SKILLS = {
+  claim:        { color:'#C0392B', bg:'#FDECEA', label:'Claim / Thesis Sentence' },
+  subclaim:     { color:'#E67E22', bg:'#FEF0E3', label:'Subclaim / Topic Sentence' },
+  context:      { color:'#27AE60', bg:'#E8F8EF', label:'Evidence Context' },
+  evidence:     { color:'#145A32', bg:'#D5F5E3', label:'Textual Evidence (MLA)' },
+  elaboration:  { color:'#1A9E8F', bg:'#E3F6F5', label:'Elaboration' },
+  evaluation:   { color:'#2980B9', bg:'#E3F1FB', label:'Evaluation of Evidence' },
+  counterclaim: { color:'#D4A017', bg:'#FDF6E3', label:'Counterclaim' },
+  rebuttal:     { color:'#7D6608', bg:'#FEFAD4', label:'Rebuttal' },
+  synthesis:    { color:'#8E44AD', bg:'#F4ECF7', label:'Synthesis' },
+  implication:  { color:'#7D3C98', bg:'#F5EEF8', label:'Implication' },
+  closing:      { color:'#922B21', bg:'#FDEDEC', label:'Closing Sentence' },
+};
+
+const ME_PARAGRAPHS = [
+  {
+    tab: `Paragraph 1 \u2014 Claim`,
+    segments: [
+      { text: `In Lord of the Flies,`, skill: `context`,
+        title: `Evidence Context`,
+        tip: `Opening with the title and author signals immediately that this is a text-based argument. It orients the reader before the claim arrives.`,
+        body: `The writer names the text and author in the very first phrase. This is not a formality: it anchors every claim that follows to a specific work, which is the first requirement of textual analysis.` },
+      { text: ` Golding does not simply depict a group of boys losing control of themselves.`, skill: null },
+      { text: ` He constructs a sustained argument about the architecture of civilization itself:`, skill: null },
+      { text: ` that social order is not a natural human instinct but a fragile performance that collapses the moment authority loses the power to compel belief.`, skill: `claim`,
+        title: `Claim / Thesis Sentence`,
+        tip: `A strong thesis does not summarize a plot. It makes an arguable interpretive assertion that someone could push back on.`,
+        body: `This is the thesis sentence: the central, arguable assertion the entire essay will prove. Notice what it does not do: it does not say "Golding shows that civilization is fragile." That would be a fact. This thesis makes a specific claim about how and why civilization collapses (when authority loses the power to compel belief), which is something a reader could reasonably argue against. Every body paragraph should advance a piece of this claim.` },
+    ]
+  },
+  {
+    tab: `Paragraph 2 \u2014 Evidence & Counterclaim`,
+    segments: [
+      { text: `The conch is the novel's clearest test of that argument.`, skill: `subclaim`,
+        title: `Subclaim / Topic Sentence`,
+        tip: `The topic sentence names exactly what this paragraph will prove. It should not restate the thesis but should advance one piece of it.`,
+        body: `This is the topic sentence: it opens the body paragraph by announcing which piece of the larger argument this paragraph will carry. It does not repeat the thesis; it narrows it to a specific element of the novel (the conch) that will be used to prove it. A good topic sentence tells the reader what to expect and why it matters before they read a word of evidence.` },
+      { text: ` When Ralph first blows it and the scattered boys respond,`, skill: `context`,
+        title: `Evidence Context`,
+        tip: `Before introducing a quote, give the reader the "when" and "why" of the moment. This prevents quote bombs.`,
+        body: `This brief orienting phrase tells the reader where in the narrative the evidence comes from. Context is not summary: it is the minimum setup a reader needs to understand why the moment being quoted matters. Without it, a quote arrives with no address, and the reader has to do extra work to place it.` },
+      { text: ` Golding describes it as "interesting and pretty and a worthy plaything"`, skill: `evidence`,
+        title: `Textual Evidence (MLA)`,
+        tip: `Every quote needs a signal phrase and an MLA citation. No quote bombs.`,
+        body: `This is the textual evidence, introduced with a signal phrase ("Golding describes it as") that names the author and integrates the quotation grammatically into the sentence. In a submitted essay, an MLA parenthetical would follow: (Golding 16). The phrase is specific and brief: a strong analytical writer does not quote long passages but selects the fewest words that carry the most interpretive weight.` },
+      { text: ` (Golding 16),`, skill: null },
+      { text: ` a description that reduces the symbol of democratic order to a child's toy before the novel has even properly begun.`, skill: `elaboration`,
+        title: `Elaboration`,
+        tip: `Elaboration explains what the evidence means, not what it says. Avoid "This shows that..." and go straight to the interpretation.`,
+        body: `This is the elaboration: it explains what the evidence means, not what it says. Notice it does not begin with "This shows that..." or "This demonstrates..." Those phrases are weak because they announce the analysis without performing it. Instead, the writer moves immediately to the interpretive claim: the word "plaything" does specific semantic work (reducing a symbol of order to a toy), and the writer names that work directly. Strong elaboration always identifies a specific word or phrase in the evidence and explains what it does.` },
+      { text: ` The detail is not incidental.`, skill: `evaluation`,
+        title: `Evaluation of Evidence`,
+        tip: `Do not just use evidence. Assess it. Tell the reader why this particular piece of evidence is meaningful or reliable.`,
+        body: `This is the evaluation of evidence: it does not simply accept the quote as proof but assesses why this particular moment carries the weight it does. Strong evaluation asks "why does this evidence work?" not just "what does it say?" Here, the writer argues that the detail is structurally significant (it appears at the novel's opening), which makes it a reliable indicator of Golding's intent rather than an isolated image.` },
+      { text: ` Because it appears so early, it functions less as description and more as a thesis: Golding signals from the first pages that the boys will never fully believe in the authority the conch represents.`, skill: `evaluation`,
+        title: `Evaluation of Evidence`,
+        tip: `Evaluation can also explain why the evidence is positioned where it is. Timing and placement are part of a text's argument.`,
+        body: `This sentence completes the evaluation by making a structural claim: the evidence is meaningful not just because of what it says but because of when it appears. Evaluation often works by comparison or by situating the evidence in the larger pattern of the text. This is what distinguishes a writer who uses evidence from a writer who thinks with it.` },
+      { text: ` One might argue that the boys' early enthusiasm for the conch suggests genuine investment in order,`, skill: `counterclaim`,
+        title: `Counterclaim`,
+        tip: `A counterclaim must be fair and specific. If you can knock it down in one word, it is not a real counterclaim.`,
+        body: `This is the counterclaim: a fairly stated opposing reading of the evidence. The cuing phrase "One might argue" signals the shift clearly. Notice that the counterclaim is not a straw man: it is a reasonable interpretation that a thoughtful reader might actually hold. A counterclaim that is too weak makes the argument look easy. A counterclaim that is fairly stated and then refuted makes it look rigorous.` },
+      { text: ` and that the conch's later failure reflects Ralph's personal inadequacy rather than any structural flaw in the idea of authority itself.`, skill: `counterclaim`,
+        title: `Counterclaim`,
+        tip: `The counterclaim should be specific enough that the rebuttal has real work to do.`,
+        body: `This second clause sharpens the counterclaim by pinning the failure on a character rather than on Golding's argument. This is worth noting: a counterclaim that attributes the problem to a person rather than to a system is easier to dismiss, which is part of why the writer chose it. The rebuttal will show that the novel itself forecloses this reading.` },
+      { text: ` The novel makes this reading difficult to sustain.`, skill: `rebuttal`,
+        title: `Rebuttal`,
+        tip: `Signal the rebuttal clearly. "However," "yet," "the text suggests otherwise" are all clean pivots.`,
+        body: `This pivot sentence signals the rebuttal without fanfare. It does not say "But I disagree" (which is a personal assertion) but instead attributes the refutation to the novel itself ("The novel makes this reading difficult"), which is a stronger rhetorical move. A rebuttal is most convincing when the text does the arguing, not the writer's opinion.` },
+      { text: ` Jack's own authority collapses just as completely as Ralph's once the hunt overtakes the tribe, suggesting that the problem is not leadership but the fragility of belief in any authority once fear displaces consent.`, skill: `rebuttal`,
+        title: `Rebuttal`,
+        tip: `The strongest rebuttals use the text itself as evidence. Return to the novel to close the counterclaim.`,
+        body: `This completes the rebuttal by returning to the text. The writer cites Jack's parallel failure to show that the collapse is systemic, not personal, which directly answers the counterclaim's claim that Ralph's inadequacy is the cause. A rebuttal that uses new evidence from the text is stronger than one that simply reasserts the original claim.` },
+    ]
+  },
+  {
+    tab: `Paragraph 3 \u2014 Synthesis & Conclusion`,
+    segments: [
+      { text: `The conch's failure, Roger's cruelty, and Jack's tribal authority are not three separate breakdowns`, skill: `synthesis`,
+        title: `Synthesis`,
+        tip: `Synthesis is not a list. It shows that the pieces of your argument are expressions of one underlying logic.`,
+        body: `Synthesis begins by gathering the essay's evidence and subclaims into a single grammatical unit. Notice this is not "First... Second... Third..." It is one sentence that names three things and then refuses to treat them as separate. The phrase "are not three separate breakdowns" performs the synthesis explicitly: it tells the reader that what looked like distinct observations is actually one argument seen from different angles.` },
+      { text: `, they are the same breakdown, observed from three different angles.`, skill: `synthesis`,
+        title: `Synthesis`,
+        tip: `The synthesis sentence should name the governing logic that unifies the evidence, not just list what the evidence was.`,
+        body: `This is the core of the synthesis move: showing that the evidence shares a governing logic, not just a shared conclusion. The writer reframes the three pieces of evidence as angles on a single phenomenon. This is what distinguishes synthesis from summary: summary restates what the evidence said; synthesis shows what the evidence, taken together, reveals.` },
+      { text: ` What Golding constructs across the novel is less a plot about boys on an island than an argument about the architecture of civilization itself: that order is not the natural state of human communities but the result of sustained, collective agreement to behave as though it is.`, skill: `implication`,
+        title: `Implication`,
+        tip: `The implication pushes the thesis past what the body paragraphs proved. It answers: "So what does this argument mean beyond the text?"`,
+        body: `This is the implication: the moment the conclusion pushes past the thesis rather than restating it. The thesis said that social order collapses when authority loses the power to compel belief. The implication widens that claim: Golding is not just writing about boys; he is making an argument about civilization as a category. A strong implication moves from "what the text argues" to "what that argument means."` },
+      { text: ` The conch matters not because it is a clever symbol but because its destruction forces a question Golding refuses to resolve: if civilization is a performance, who decides when the curtain falls?`, skill: `implication`,
+        title: `Implication`,
+        tip: `Ending on a question is a strong rhetorical choice when the essay has done enough work to make the question feel urgent rather than evasive.`,
+        body: `This sentence extends the implication by reframing the conch one final time: not as a symbol to be explained but as a question to be carried. Ending on a question works here because the essay has done the analytical work to earn it. The question does not avoid the argument; it opens it outward. A conclusion that leaves the reader with something to think about is more effective than one that simply repeats what was already proved.` },
+      { text: ` That question is not one Golding answers. But the novel's final image, a boy weeping for the end of innocence, watched by a man whose own civilization is at war, suggests that the answer, wherever it comes from, will not be reassuring.`, skill: `closing`,
+        title: `Closing Sentence`,
+        tip: `A strong closing sentence arrives somewhere new. It should feel like the last beat of an argument that has been building, not a summary, not a restatement, but a landing.`,
+        body: `The closing sentence does not say "In conclusion" or restate the thesis. Instead, it returns to a specific image from the novel and uses it to seal the argument's emotional and intellectual logic. The final clause ("will not be reassuring") is honest and unsettling in exactly the way Golding's novel is. Read your conclusion aloud: does it feel finished, or does it feel abandoned?` },
+    ]
+  }
+];
+
+let meActiveSpan = null;
+
+function buildModelExplorer() {
+  const tabsEl = document.getElementById('me-tabs');
+  const panelsEl = document.getElementById('me-panels');
+  if (!tabsEl || !panelsEl) return;
+
+  ME_PARAGRAPHS.forEach((para, pi) => {
+    // Tab button
+    const btn = document.createElement('button');
+    btn.className = 'tb' + (pi === 0 ? ' active' : '');
+    btn.setAttribute('role','tab');
+    btn.setAttribute('aria-selected', pi === 0 ? 'true' : 'false');
+    btn.textContent = para.tab;
+    btn.onclick = () => switchMeTab(pi);
+    tabsEl.appendChild(btn);
+
+    // Panel
+    const panel = document.createElement('div');
+    panel.className = 'me-panel' + (pi === 0 ? ' active' : '');
+    panel.id = 'me-panel-' + pi;
+
+    // Hint
+    const hint = document.createElement('div');
+    hint.className = 'me-hint';
+    hint.textContent = 'Tap any highlighted phrase to see the annotation below.';
+    panel.appendChild(hint);
+
+    // Paragraph text
+    const paraEl = document.createElement('p');
+    paraEl.className = 'me-para';
+
+    para.segments.forEach((seg, si) => {
+      if (!seg.skill) {
+        paraEl.appendChild(document.createTextNode(seg.text));
+      } else {
+        const meta = ME_SKILLS[seg.skill];
+        const span = document.createElement('span');
+        span.className = 'me-span';
+        span.style.background = meta.bg;
+        span.style.setProperty('--sc', meta.color);
+        span.dataset.pi = pi;
+        span.dataset.si = si;
+        span.textContent = seg.text;
+        span.addEventListener('click', () => handleMeClick(span, seg, pi));
+        paraEl.appendChild(span);
+      }
+    });
+    panel.appendChild(paraEl);
+
+    // Callout placeholder
+    const callout = document.createElement('div');
+    callout.className = 'me-callout';
+    callout.id = 'me-callout-' + pi;
+    panel.appendChild(callout);
+
+    // Legend chips
+    const legend = document.createElement('div');
+    legend.className = 'me-legend';
+    const usedSkills = [...new Set(para.segments.filter(s=>s.skill).map(s=>s.skill))];
+    usedSkills.forEach(key => {
+      const meta = ME_SKILLS[key];
+      const chip = document.createElement('span');
+      chip.className = 'me-chip';
+      chip.style.setProperty('--lc', meta.color);
+      chip.style.setProperty('--lb', meta.bg);
+      chip.innerHTML = '<span class="me-dot"></span>' + meta.label;
+      chip.addEventListener('click', () => {
+        const first = panel.querySelector('.me-span[data-pi="'+pi+'"]');
+        // find first span of this skill
+        const spans = panel.querySelectorAll('.me-span');
+        for (const s of spans) {
+          const idx = parseInt(s.dataset.si);
+          if (para.segments[idx] && para.segments[idx].skill === key) {
+            s.scrollIntoView({behavior:'smooth', block:'center'});
+            handleMeClick(s, para.segments[idx], pi);
+            break;
+          }
+        }
+      });
+      legend.appendChild(chip);
+    });
+    panel.appendChild(legend);
+
+    panelsEl.appendChild(panel);
+  });
+}
+
+function switchMeTab(pi) {
+  document.querySelectorAll('#me-tabs .tb').forEach((b,i) => {
+    b.classList.toggle('active', i === pi);
+    b.setAttribute('aria-selected', i === pi ? 'true' : 'false');
+  });
+  document.querySelectorAll('.me-panel').forEach((p,i) => {
+    p.classList.toggle('active', i === pi);
+  });
+  // Clear active span
+  if (meActiveSpan) { meActiveSpan.classList.remove('lit'); meActiveSpan = null; }
+  document.querySelectorAll('.me-callout').forEach(c => c.classList.remove('visible'));
+}
+
+function handleMeClick(span, seg, pi) {
+  const callout = document.getElementById('me-callout-' + pi);
+  const meta = ME_SKILLS[seg.skill];
+
+  if (meActiveSpan === span) {
+    span.classList.remove('lit');
+    callout.classList.remove('visible');
+    meActiveSpan = null;
+    return;
+  }
+  if (meActiveSpan) meActiveSpan.classList.remove('lit');
+  document.querySelectorAll('.me-callout').forEach(c => c.classList.remove('visible'));
+
+  span.classList.add('lit');
+  meActiveSpan = span;
+
+  callout.style.setProperty('--cc', meta.color);
+  callout.style.setProperty('--cb', meta.bg);
+  callout.innerHTML =
+    '<div class="me-clabel">' + meta.label + '</div>' +
+    '<div class="me-ctitle">' + seg.title + '</div>' +
+    '<div class="me-cbody">' + seg.body + '</div>' +
+    (seg.tip ? '<div class="me-ctip">' + seg.tip + '</div>' : '');
+  callout.classList.add('visible');
+  setTimeout(() => callout.scrollIntoView({behavior:'smooth', block:'nearest'}), 60);
+}
+
+// ── REFERENCE GUIDE ──
+
 function buildRef(){
   const g=document.getElementById('skills-grid'),s=document.getElementById('ss');
   SK.forEach(k=>{
@@ -255,7 +551,6 @@ function buildRef(){
     c.style.setProperty('--a',k.a);
     c.innerHTML=`<div class="ch"><div class="ci" style="background:${k.al};color:${k.a}">${k.icon}</div><div><div class="cn">Skill ${k.id}</div><div class="ct">${k.name}</div></div></div><div class="cd">${k.def}</div><div class="ce">${k.ex}</div><div class="wo">${k.wo}</div>`;
     g.appendChild(c);
-
     const o=document.createElement('option');
     o.value=k.id;
     o.textContent=`${k.id}. ${k.name}`;
@@ -263,6 +558,7 @@ function buildRef(){
   });
 }
 
+// ── LESSONS ──
 function buildLess(){
   const nav=document.getElementById('ltabs'),pan=document.getElementById('lpanels');
   SK.forEach((k,i)=>{
@@ -272,17 +568,12 @@ function buildLess(){
     b.setAttribute('aria-selected',i===0?'true':'false');
     b.textContent=k.name;
     b.onclick=()=>{
-      document.querySelectorAll('#ltabs .tb').forEach(x=>{
-        x.classList.remove('active');
-        x.setAttribute('aria-selected','false');
-      });
+      document.querySelectorAll('#ltabs .tb').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
       document.querySelectorAll('#lpanels .tp').forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');
-      b.setAttribute('aria-selected','true');
+      b.classList.add('active');b.setAttribute('aria-selected','true');
       document.getElementById('lp'+i).classList.add('active');
     };
     nav.appendChild(b);
-
     const p=document.createElement('div');
     p.className='tp'+(i===0?' active':'');
     p.id='lp'+i;
@@ -293,9 +584,9 @@ function buildLess(){
 
 function rStep(k,s){
   if(s===1)return`<div class="slb">Step 1</div><div class="stt">Read the Passage</div><div class="pb">${PASS}</div><p style="font-size:.88rem;color:#aaa;margin-top:8px;">This passage is used across all eight lessons.</p>`;
-  if(s===2)return`<div class="slb">Step 2</div><div class="stt">A Weak Attempt — ${k.name}</div><div class="wb"><div class="wl">Weak Example</div>${k.ls.w}</div><div class="wo">${k.ls.wn}</div>`;
-  if(s===3)return`<div class="slb">Step 3</div><div class="stt">A Strong Attempt — ${k.name}</div><div class="sb"><div class="sl">Strong Example</div>${k.ls.s}</div><div class="an">${k.ls.sn}</div>`;
-  if(s===4)return`<div class="slb">Step 4</div><div class="stt">Reflect</div><div class="rp">${k.ls.r}</div><div class="rn">Write your response here — this is just for you. This won't be submitted anywhere.</div><textarea rows="5" placeholder="Your thoughts..."></textarea>`;
+  if(s===2)return`<div class="slb">Step 2</div><div class="stt">A Weak Attempt, ${k.name}</div><div class="wb"><div class="wl">Weak Example</div>${k.ls.w}</div><div class="wo">${k.ls.wn}</div>`;
+  if(s===3)return`<div class="slb">Step 3</div><div class="stt">A Strong Attempt, ${k.name}</div><div class="sb"><div class="sl">Strong Example</div>${k.ls.s}</div><div class="an">${k.ls.sn}</div>`;
+  if(s===4)return`<div class="slb">Step 4</div><div class="stt">Reflect</div><div class="rp">${k.ls.r}</div><div class="rn">Write your response here, this is just for you. This won't be submitted anywhere.</div><textarea rows="5" placeholder="Your thoughts..."></textarea>`;
 }
 
 function chStep(i,d){
@@ -310,28 +601,21 @@ function chStep(i,d){
   nb.textContent=nxt===4?'Done ✓':'Next →';
 }
 
+// ── TAB SWITCHERS ──
 function swP(id,btn){
-  document.querySelectorAll('#practice .tnav .tb').forEach(b=>{
-    b.classList.remove('active');
-    b.setAttribute('aria-selected','false');
-  });
+  document.querySelectorAll('#practice .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
   document.querySelectorAll('#practice .tp').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected','true');
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
   document.getElementById(id).classList.add('active');
 }
-
 function swM(id,btn){
-  document.querySelectorAll('#mla .tnav .tb').forEach(b=>{
-    b.classList.remove('active');
-    b.setAttribute('aria-selected','false');
-  });
+  document.querySelectorAll('#mla .tnav .tb').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
   document.querySelectorAll('#mla .tp').forEach(p=>p.classList.remove('active'));
-  btn.classList.add('active');
-  btn.setAttribute('aria-selected','true');
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');
   document.getElementById(id).classList.add('active');
 }
 
+// ── API ──
 async function api(sys, msg) {
   const r = await fetch("https://analysis-lab-proxy.vercel.app/api/proxy", {
     method: "POST",
@@ -343,58 +627,22 @@ async function api(sys, msg) {
       messages: [{ role: "user", content: msg }]
     })
   });
-
   let data;
-  try {
-    data = await r.json();
-  } catch {
-    throw new Error(`Non-JSON response from proxy. Status: ${r.status}`);
-  }
-
+  try { data = await r.json(); } catch { throw new Error(`Non-JSON response from proxy. Status: ${r.status}`); }
   if (!r.ok) {
-    const errorMessage =
-  typeof data.error === "string"
-    ? data.error
-    : data.error
-    ? JSON.stringify(data.error)
-    : data.details
-    ? JSON.stringify(data.details)
-    : JSON.stringify(data);
-
-throw new Error(errorMessage);
+    const errorMessage = typeof data.error==="string" ? data.error : data.error ? JSON.stringify(data.error) : data.details ? JSON.stringify(data.details) : JSON.stringify(data);
+    throw new Error(errorMessage);
   }
-
-  if (!data.content || !Array.isArray(data.content)) {
-    throw new Error("Unexpected response format from API.");
-  }
-
+  if (!data.content || !Array.isArray(data.content)) throw new Error("Unexpected response format from API.");
   return data.content.map(b => b.text || "").join("");
 }
 
-function load(id,col){
-  const b=document.getElementById(id);
-  if(col)b.style.setProperty('--fc',col);
-  b.innerHTML='<span class="lm"><span class="sp"></span>Thinking...</span>';
-  b.classList.add('visible');
-}
-
-function res(id,txt,col){
-  const b=document.getElementById(id);
-  if(col)b.style.setProperty('--fc',col);
-  b.innerHTML=txt.replace(/\n/g,'<br>');
-  b.classList.add('visible');
-}
-
+function load(id,col){ const b=document.getElementById(id); if(col)b.style.setProperty('--fc',col); b.innerHTML='<span class="lm"><span class="sp"></span>Thinking...</span>'; b.classList.add('visible'); }
+function res(id,txt,col){ const b=document.getElementById(id); if(col)b.style.setProperty('--fc',col); b.innerHTML=txt.replace(/\n/g,'<br>'); b.classList.add('visible'); }
 function err(id, message="Something went wrong. Check your connection and try again."){
-  const b = document.getElementById(id);
-
-  const msg = typeof message === "string"
-    ? message
-    : JSON.stringify(message, null, 2);
-
-  b.textContent = msg;
-  b.style.color = '#C0392B';
-  b.classList.add('visible');
+  const b=document.getElementById(id);
+  const msg=typeof message==="string" ? message : JSON.stringify(message,null,2);
+  b.textContent=msg; b.style.color='#C0392B'; b.classList.add('visible');
 }
 
 async function getFeedback(){
@@ -402,38 +650,31 @@ async function getFeedback(){
   if(!sid||!att){alert('Please select a skill and write your attempt first.');return;}
   const k=SK.find(s=>s.id===parseInt(sid)),src=document.getElementById('src').value.trim();
   load('fr',k.a);
-  try{
-    res('fr',await api(AS,`Skill being practiced: ${k.name}\nDefinition: ${k.def}\nSource text: ${src||'None provided'}\nStudent attempt: ${att}\n\nGive feedback following your guidelines.`),k.a);
-  } catch(e){
-    err('fr',e.message);
-  }
+  try{ res('fr',await api(AS,`Skill being practiced: ${k.name}\nDefinition: ${k.def}\nSource text: ${src||'None provided'}\nStudent attempt: ${att}\n\nGive feedback following your guidelines.`),k.a); }
+  catch(e){ err('fr',e.message); }
 }
 
 async function askQ(){
   const q=document.getElementById('aq').value.trim();
   if(!q){alert('Please write a question first.');return;}
   load('qr','#1A9E8F');
-  try{
-    res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F');
-  } catch(e){
-    err('qr', e.message || e);
-  }
+  try{ res('qr',await api(AS,`The student is asking a genuine question about analysis:\n${q}\n\nAnswer it following your guidelines.`),'#1A9E8F'); }
+  catch(e){ err('qr',e.message||e); }
 }
 
 async function askMLA(){
   const q=document.getElementById('mq').value.trim();
   if(!q){alert('Please write an MLA question first.');return;}
   load('mr','#1A6B4A');
-  try{
-    res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A');
-  } catch(e){
-    err('mr', e.message || e);
-  }
+  try{ res('mr',await api(MS,`The student has an MLA or citation question:\n${q}\n\nAnswer it following your guidelines.`),'#1A6B4A'); }
+  catch(e){ err('mr',e.message||e); }
 }
 
+// ── INTERSECTION OBSERVER (scroll-in animations + nav highlight) ──
 function initObs(){
-  const secs=document.querySelectorAll('section'),lnks=document.querySelectorAll('.nl a');
-  const obs=new IntersectionObserver(entries=>{
+  const allSections = document.querySelectorAll('section, #model-paragraphs');
+  const lnks = document.querySelectorAll('.nl a');
+  const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('visible');
@@ -442,11 +683,12 @@ function initObs(){
       }
     });
   },{threshold:.07});
-  secs.forEach(s=>obs.observe(s));
+  allSections.forEach(s=>obs.observe(s));
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
   buildRef();
+  buildModelExplorer();
   buildLess();
   initObs();
 });
